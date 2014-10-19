@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MojeDemotywatory", "MojeDemotywatory\MojeDemotywatory.csproj", "{26588E0E-3123-453A-BCA9-542467E8154B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MojeDemotywarotyTesty", "MojeDemotywarotyTesty\MojeDemotywarotyTesty.csproj", "{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MojeDemotywatoryApi", "MojeDemotywatoryApi\MojeDemotywatoryApi.csproj", "{9F152853-1873-47EE-9824-8FC06D017C5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26588E0E-3123-453A-BCA9-542467E8154B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26588E0E-3123-453A-BCA9-542467E8154B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26588E0E-3123-453A-BCA9-542467E8154B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26588E0E-3123-453A-BCA9-542467E8154B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F152853-1873-47EE-9824-8FC06D017C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F152853-1873-47EE-9824-8FC06D017C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F152853-1873-47EE-9824-8FC06D017C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F152853-1873-47EE-9824-8FC06D017C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
