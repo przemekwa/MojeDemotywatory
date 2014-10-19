@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MojeDemotywatoryApi;
 using System.Collections;
+using System.Linq;
 
 namespace MojeDemotywarotyTesty
 {
@@ -9,7 +10,7 @@ namespace MojeDemotywarotyTesty
     public class MojeDemotywatoryApi
     {
         [TestMethod]
-        public void MojeDemotywatoryApi_OgólneDziałanie()
+        public void PobierzDemotywatoryZGłownej()
         {
             var fabryka = new Fabryka("http://demotywatory.pl/");
 
@@ -17,5 +18,18 @@ namespace MojeDemotywarotyTesty
 
             Assert.AreEqual(rezult.Count, 10);
         }
+
+        [TestMethod]
+        public void SprawdźCzyJestAdresObrazka()
+        {
+            var fabryka = new Fabryka("http://demotywatory.pl/");
+
+            var rezult = fabryka.PobierzDemotywatory();
+
+            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ObrazekUrl)));
+            
+        }
+
+
     }
 }
