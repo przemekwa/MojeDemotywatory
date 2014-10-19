@@ -30,6 +30,18 @@ namespace MojeDemotywarotyTesty
             
         }
 
+        [TestMethod]
+        public void SprawdźCzyJestAdresLinkuZObrazka()
+        {
+            var fabryka = new Fabryka("http://demotywatory.pl/");
+
+            var rezult = fabryka.PobierzDemotywatory();
+
+            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.AdresUrl)));
+
+        }
+      
+
 
     }
 }

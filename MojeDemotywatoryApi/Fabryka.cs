@@ -46,7 +46,8 @@ namespace MojeDemotywatoryApi
 
                 var demot = new Demotywator
                 {
-                    ObrazekUrl = tagObrazka.Attributes["src"].Value
+                    ObrazekUrl = tagObrazka.Attributes["src"].Value,
+                    AdresUrl = adresWWW + htmlNode.Attributes["href"].Value
                 };
 
                 rezult.Add(demot);
