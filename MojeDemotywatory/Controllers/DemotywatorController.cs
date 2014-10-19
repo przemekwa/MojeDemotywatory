@@ -15,11 +15,11 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Index()
         {
-            var test = new Fabryka("http://demotywatory.pl/");
+            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
 
             var model = new Demotywatory();
 
-            model.ListaDemotow = test.PobierzDemotywatory();
+            model.ListaDemotow = test.PobierzDemotywatoryZeStron(4);
 
             return View(model);
         }

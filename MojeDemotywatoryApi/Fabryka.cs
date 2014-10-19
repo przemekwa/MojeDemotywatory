@@ -7,21 +7,35 @@ using HtmlAgilityPack;
 
 namespace MojeDemotywatoryApi
 {
-    public class Fabryka
+    public class FabrykaDemotywatorow
     {
         private string adresWWW;
 
-        public Fabryka(string Url)
+        public FabrykaDemotywatorow(string Url)
         {
             this.adresWWW = Url;
         }
 
-        public List<Demotywator> PobierzDemotywatory()
+
+        public List<Demotywator> PobierzDemotywatoryZeStron(int page)
         {
-            return this.ParsujStrone();
+            var rezult = new List<Demotywator>();
+
+            for (int i=1;i<=page;i++)
+            {
+                rezult.AddRange(this.ParsujStrone(i));
+            }
+
+            return rezult;
+        }
+
+
+        public List<Demotywator> PobierzDemotywatoryZGłownej()
+        {
+            return this.ParsujStrone(1);
         }
         
-        private List<Demotywator> ParsujStrone()
+        private List<Demotywator> ParsujStrone(int strona)
         {
             var rezult = new List<Demotywator>();
 
@@ -32,7 +46,7 @@ namespace MojeDemotywatoryApi
                 AutoDetectEncoding = true,
             };
 
-            html = www.Load(adresWWW);
+            html = www.Load(adresWWW + "page/" + strona);
 
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//a[@class=\"picwrapper\"]"))
