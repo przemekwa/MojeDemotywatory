@@ -20,8 +20,7 @@ namespace MojeDemotywatoryApi
         {
             return this.ParsujStrone();
         }
-
-
+        
         private List<Demotywator> ParsujStrone()
         {
             var rezult = new List<Demotywator>();

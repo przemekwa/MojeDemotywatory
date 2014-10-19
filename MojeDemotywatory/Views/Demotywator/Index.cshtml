@@ -1,0 +1,16 @@
+﻿@model MojeDemotywatory.Models.Demotywatory
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+
+@foreach (MojeDemotywatoryApi.Demotywator d in @Model.ListaDemotow)
+   {
+       <img src="@d.ObrazekUrl" /><br />
+   }
+ 
