@@ -8,6 +8,6 @@ namespace MojeDemotywatory.Models
 {
     public class Demotywatory
     {
-        public List<Demotywator> ListaDemotow { get; set; }
+        public List<Mem> ListaDemotow { get; set; }
     }
 }

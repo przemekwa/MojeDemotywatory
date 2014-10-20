@@ -20,13 +20,26 @@ namespace MojeDemotywarotyTesty
         }
 
         [TestMethod]
+        public void PobierzDemotywatoryZeSlajdow()
+        {
+            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+
+            var rezult = fabryka.PobierzDemotywatoryZeSlajdow("4405352/8-psychologicznych-trikow-ktore-pomoga-ci-wplywac-na-ludzi");
+
+            Assert.AreEqual(rezult.Count, 8);
+        }
+
+
+
+
+        [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
             var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZeStron(2);
 
-            Assert.AreEqual(rezult.Count, 19);
+            Assert.AreEqual(rezult.Count, 20);
         }
 
         [TestMethod]

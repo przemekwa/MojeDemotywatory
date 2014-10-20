@@ -16,10 +16,44 @@ namespace MojeDemotywatoryApi
             this.adresWWW = Url;
         }
 
-
-        public List<Demotywator> PobierzDemotywatoryZeStron(int page)
+        public List<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
         {
-            var rezult = new List<Demotywator>();
+            var dobryAdres = adresWWW + adres;
+
+            HtmlDocument html = new HtmlDocument();
+
+            var www = new HtmlWeb
+            {
+                AutoDetectEncoding = true,
+            };
+
+            html = www.Load(dobryAdres);
+
+            var rezult = new List<DemotywatorSlajd>();
+
+            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
+            {
+                var tagObrazka = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
+                
+                var opisObrazka = htmlNode.SelectSingleNode("p");
+
+                if (opisObrazka == null) continue;
+
+                var demot = new DemotywatorSlajd
+                {
+                    ObrazekUrl = tagObrazka.Attributes["src"].Value,
+                    Opis = opisObrazka.InnerText
+                };
+
+                rezult.Add(demot);
+            }
+            
+            return rezult;
+        }
+
+        public List<Mem> PobierzDemotywatoryZeStron(int page)
+        {
+            var rezult = new List<Mem>();
 
             for (int i=1;i<=page;i++)
             {
@@ -30,14 +64,14 @@ namespace MojeDemotywatoryApi
         }
 
 
-        public List<Demotywator> PobierzDemotywatoryZGłownej()
+        public List<Mem> PobierzDemotywatoryZGłownej()
         {
             return this.ParsujStrone(1);
         }
         
-        private List<Demotywator> ParsujStrone(int strona)
+        private List<Mem> ParsujStrone(int strona)
         {
-            var rezult = new List<Demotywator>();
+            var rezult = new List<Mem>();
 
             HtmlDocument html = new HtmlDocument();
 

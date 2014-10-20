@@ -6,9 +6,21 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi
 {
-    public class Demotywator
+
+    public abstract class Mem
     {
         public string ObrazekUrl { get; set; }
         public string AdresUrl { get; set; }
+    }
+
+
+    public class Demotywator : Mem
+    {
+      
+    }
+
+    public class DemotywatorSlajd :Mem
+    {
+        public string Opis { get; set; }
     }
 }

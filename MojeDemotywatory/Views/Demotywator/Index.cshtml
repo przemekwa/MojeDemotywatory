@@ -7,7 +7,7 @@
 
 
 
-@foreach (MojeDemotywatoryApi.Demotywator d in @Model.ListaDemotow)
+@foreach (var d in @Model.ListaDemotow)
    {
        <a href="@d.AdresUrl" > 
            <img src="@d.ObrazekUrl"/>
