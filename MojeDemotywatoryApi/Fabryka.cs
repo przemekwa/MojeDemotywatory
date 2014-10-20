@@ -83,22 +83,30 @@ namespace MojeDemotywatoryApi
             html = www.Load(adresWWW + "page/" + strona);
 
 
-            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//a[@class=\"picwrapper\"]"))
+            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var tagObrazka = htmlNode.SelectSingleNode("img");
+                var link = htmlNode.SelectSingleNode("div[@class=\"\n\t demot_pic\n\t image600\t \t \t \t \"]/a[@class=\"picwrapper\"]");
 
-                if (tagObrazka == null)
+                if (link == null)
                 {
-                    throw new ArgumentNullException("Brak taga <img> w linku demotywatora.");
+                    link = htmlNode.SelectSingleNode("div[@class=\"\n\t demot_pic\n\t image600\t \t  gallery \t \t \"]/a[@class=\"picwrapper\"]");
                 }
+
+                if (link == null) continue;
+
+
+                var tagObrazka = link.SelectSingleNode("img");
+
+                if (tagObrazka == null) continue;
 
                 var demot = new Demotywator
                 {
                     ObrazekUrl = tagObrazka.Attributes["src"].Value,
-                    AdresUrl = adresWWW + htmlNode.Attributes["href"].Value
+                    AdresUrl = adresWWW + link.Attributes["href"].Value
                 };
 
                 rezult.Add(demot);
+               
             }
          
             return rezult;
