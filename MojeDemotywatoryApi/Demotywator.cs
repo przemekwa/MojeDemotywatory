@@ -11,6 +11,7 @@ namespace MojeDemotywatoryApi
     {
         public string ObrazekUrl { get; set; }
         public string AdresUrl { get; set; }
+        public bool czySlajdy { get; set; }
     }
 
 

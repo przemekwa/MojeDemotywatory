@@ -14,9 +14,9 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzDemotywatoryZGłownej();
+             var rezult = fabryka.PobierzDemotywatoryZGłownej();
 
-            Assert.AreEqual(rezult.Count, 10);
+            Assert.AreEqual(rezult.ToList().Count, 10);
         }
 
         [TestMethod]
@@ -30,8 +30,6 @@ namespace MojeDemotywarotyTesty
         }
 
 
-
-
         [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
@@ -41,6 +39,18 @@ namespace MojeDemotywarotyTesty
 
             Assert.AreEqual(rezult.Count, 20);
         }
+
+        [TestMethod]
+        public void SprawdzCzySaSlajdy()
+        {
+            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+
+            var rezult = fabryka.PobierzDemotywatoryZeStron(1);
+
+            Assert.AreEqual(true, rezult.Any(x => x.czySlajdy == true));
+            
+        }
+
 
         [TestMethod]
         public void SprawdźCzyJestAdresObrazka()

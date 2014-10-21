@@ -64,12 +64,12 @@ namespace MojeDemotywatoryApi
         }
 
 
-        public List<Mem> PobierzDemotywatoryZGłownej()
+        public IEnumerable<Mem> PobierzDemotywatoryZGłownej()
         {
             return this.ParsujStrone(1);
         }
         
-        private List<Mem> ParsujStrone(int strona)
+        private IEnumerable<Mem> ParsujStrone(int strona)
         {
             var rezult = new List<Mem>();
 
@@ -85,15 +85,11 @@ namespace MojeDemotywatoryApi
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var link = htmlNode.SelectSingleNode("div[@class=\"\n\t demot_pic\n\t image600\t \t \t \t \"]/a[@class=\"picwrapper\"]");
+                var czySlajdy = htmlNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
 
-                if (link == null)
-                {
-                    link = htmlNode.SelectSingleNode("div[@class=\"\n\t demot_pic\n\t image600\t \t  gallery \t \t \"]/a[@class=\"picwrapper\"]");
-                }
+                var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
                 if (link == null) continue;
-
 
                 var tagObrazka = link.SelectSingleNode("img");
 
@@ -102,7 +98,8 @@ namespace MojeDemotywatoryApi
                 var demot = new Demotywator
                 {
                     ObrazekUrl = tagObrazka.Attributes["src"].Value,
-                    AdresUrl = adresWWW + link.Attributes["href"].Value
+                    AdresUrl = adresWWW + link.Attributes["href"].Value,
+                    czySlajdy = czySlajdy
                 };
 
                 rezult.Add(demot);
