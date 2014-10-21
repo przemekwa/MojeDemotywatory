@@ -47,8 +47,14 @@ namespace MojeDemotywarotyTesty
 
             var rezult = fabryka.PobierzDemotywatoryZeStron(1);
 
-            Assert.AreEqual(true, rezult.Any(x => x.czySlajdy == true));
-            
+            if (!rezult.Any(x => x.czySlajdy == true))
+            {
+                Assert.Fail();
+            }
+
+            var memKtoryMaSlajdy = rezult.Where(x => x.czySlajdy == true);
+
+            Assert.AreEqual(true, memKtoryMaSlajdy.All(x => x.slajdy != null));
         }
 
 

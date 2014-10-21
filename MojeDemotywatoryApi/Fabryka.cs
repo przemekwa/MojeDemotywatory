@@ -95,11 +95,19 @@ namespace MojeDemotywatoryApi
 
                 if (tagObrazka == null) continue;
 
-                var demot = new Demotywator
+                IEnumerable<DemotywatorSlajd> slajdy = null;
+
+                if (czySlajdy)
+                {
+                    slajdy = this.PobierzDemotywatoryZeSlajdow(link.Attributes["href"].Value);
+                }
+
+                var demot = new Mem
                 {
                     ObrazekUrl = tagObrazka.Attributes["src"].Value,
                     AdresUrl = adresWWW + link.Attributes["href"].Value,
-                    czySlajdy = czySlajdy
+                    czySlajdy = czySlajdy,
+                    slajdy = slajdy
                 };
 
                 rezult.Add(demot);
