@@ -24,9 +24,9 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzDemotywatoryZeSlajdow("4405352/8-psychologicznych-trikow-ktore-pomoga-ci-wplywac-na-ludzi");
+            var rezult = fabryka.PobierzDemotywatoryZeSlajdow("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
-            Assert.AreEqual(rezult.Count, 8);
+            Assert.AreEqual(rezult.Count, 9);
         }
 
 

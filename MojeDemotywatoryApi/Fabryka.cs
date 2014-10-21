@@ -37,12 +37,17 @@ namespace MojeDemotywatoryApi
                 
                 var opisObrazka = htmlNode.SelectSingleNode("p");
 
-                if (opisObrazka == null) continue;
+                if (opisObrazka == null || string.IsNullOrEmpty(opisObrazka.InnerText))  
+                {
+                    opisObrazka = htmlNode.SelectSingleNode("h3"); 
+                }
+
+                if (tagObrazka == null) continue;
 
                 var demot = new DemotywatorSlajd
                 {
                     ObrazekUrl = tagObrazka.Attributes["src"].Value,
-                    Opis = opisObrazka.InnerText
+                    Opis = opisObrazka == null ? "" : opisObrazka.InnerText
                 };
 
                 rezult.Add(demot);

@@ -9,9 +9,31 @@
 
 @foreach (var d in @Model.ListaDemotow)
    {
-       <a href="@d.AdresUrl" > 
+    if (d.czySlajdy)
+    {
+        foreach (var s in d.slajdy)
+        {
+            <table>
+                <tr>
+                   <td><img src="@s.ObrazekUrl"/> </td> 
+                    <td>@s.Opis </td> 
+                </tr>
+                
+            </table>
+           
+             
+           <br />
+              
+    
+        }      
+    }
+    else
+    {
+         <a href="@d.AdresUrl" > 
            <img src="@d.ObrazekUrl"/>
            </a>
     <br />
+    }
+      
    }
  
