@@ -68,6 +68,11 @@ namespace MojeDemotywatoryApi
             return rezult;
         }
 
+        public List<Mem> PobierzDemotywatoryZeStrony(int page)
+        {
+            return this.ParsujStrone(page).ToList();
+        }
+
 
         public IEnumerable<Mem> PobierzDemotywatoryZGłownej()
         {

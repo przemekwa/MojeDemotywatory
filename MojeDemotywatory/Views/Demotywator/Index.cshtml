@@ -6,6 +6,9 @@
 
 
 
+@Html.ActionLink("Następna strona " + @Model.AktualnaStrona, "Nastepna", new { strona = @Model.AktualnaStrona})
+<br />
+
 
 @foreach (var d in @Model.ListaDemotow)
    {
@@ -36,4 +39,6 @@
     }
       
    }
- 
+
+<br />
+ @Html.ActionLink("Następna strona " + @Model.AktualnaStrona, "Nastepna", new { strona = @Model.AktualnaStrona})

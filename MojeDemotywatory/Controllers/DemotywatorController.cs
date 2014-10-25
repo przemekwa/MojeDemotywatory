@@ -10,6 +10,7 @@ namespace MojeDemotywatory.Controllers
 {
     public class DemotywatorController : Controller
     {
+       
         //
         // GET: /Demotywator/
 
@@ -19,9 +20,22 @@ namespace MojeDemotywatory.Controllers
 
             var model = new Demotywatory();
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStron(4);
+            model.ListaDemotow = test.PobierzDemotywatoryZeStron(1);
 
             return View(model);
+        }
+
+        public ActionResult Nastepna(string strona)
+        {
+            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
+
+            var model = new Demotywatory();
+
+            model.AktualnaStrona =Int32.Parse(strona);
+
+            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(model.AktualnaStrona++);
+
+            return View("Index", model);
         }
 
     }
