@@ -38,5 +38,20 @@ namespace MojeDemotywatory.Controllers
             return View("Index", model);
         }
 
+        public ActionResult Losowa(string strona)
+        {
+            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
+
+            var model = new Demotywatory();
+
+            var losowa = new Random();
+
+            model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
+
+            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(model.AktualnaStrona);
+
+            return View("Index", model);
+        }
+
     }
 }

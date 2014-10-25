@@ -4,9 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-
-
-@Html.ActionLink("Następna strona " + @Model.AktualnaStrona, "Nastepna", new { strona = @Model.AktualnaStrona})
+Aktualna strona @Model.AktualnaStrona
+<br />
+@Html.ActionLink("Losowa strona", "Losowa", new { strona = @Model.AktualnaStrona})
+    @Html.ActionLink("Następna strona", "Nastepna", new { strona = @Model.AktualnaStrona})
 <br />
 
 
@@ -41,4 +42,4 @@
    }
 
 <br />
- @Html.ActionLink("Następna strona " + @Model.AktualnaStrona, "Nastepna", new { strona = @Model.AktualnaStrona})
+ @Html.ActionLink("Następna strona", "Nastepna", new { strona = @Model.AktualnaStrona})
