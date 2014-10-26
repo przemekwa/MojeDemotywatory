@@ -3,20 +3,22 @@
 @{
     ViewBag.Title = "Index";
 }
-
-Aktualna strona @Model.AktualnaStrona
-<br />
-@Html.ActionLink("Losowa strona", "Losowa", new { strona = @Model.AktualnaStrona})
-    @Html.ActionLink("Następna strona", "Nastepna", new { strona = @Model.AktualnaStrona})
-<br />
+     
+    
 
 
+
+ <div class="srodek">
+   
 @foreach (var d in @Model.ListaDemotow)
    {
     if (d.czySlajdy)
     {
         foreach (var s in d.slajdy)
         {
+           
+
+            
             <table>
                 <tr>
                    <td><img src="@s.ObrazekUrl"/> </td> 
@@ -24,7 +26,7 @@ Aktualna strona @Model.AktualnaStrona
                 </tr>
                 
             </table>
-           
+          
              
            <br />
               
@@ -41,5 +43,6 @@ Aktualna strona @Model.AktualnaStrona
       
    }
 
-<br />
- @Html.ActionLink("Następna strona", "Nastepna", new { strona = @Model.AktualnaStrona})
+
+      </div>
+
