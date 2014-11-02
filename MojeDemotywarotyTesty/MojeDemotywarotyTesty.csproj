@@ -50,10 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BazaLite.cs" />
     <Compile Include="MojeDemotywatoryApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BazaLite\BazaLite.csproj">
+      <Project>{2e108269-4829-42f7-b883-357137aceb34}</Project>
+      <Name>BazaLite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MojeDemotywatoryApi\MojeDemotywatoryApi.csproj">
       <Project>{9f152853-1873-47ee-9824-8fc06d017c5b}</Project>
       <Name>MojeDemotywatoryApi</Name>

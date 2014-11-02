@@ -10,5 +10,7 @@ namespace MojeDemotywatory.Models
     {
         public List<Mem> ListaDemotow { get; set; }
         public int AktualnaStrona { get; set; }
+
+
     }
 }

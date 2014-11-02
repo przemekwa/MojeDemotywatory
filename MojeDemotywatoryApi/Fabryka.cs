@@ -89,7 +89,7 @@ namespace MojeDemotywatoryApi
             {
                 AutoDetectEncoding = true,
             };
-
+            
             html = www.Load(adresWWW + "page/" + strona);
 
 

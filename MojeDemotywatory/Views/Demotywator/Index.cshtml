@@ -3,12 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-     
-    
-
-
-
- <div class="srodek">
+<div class="srodek">
    
 @foreach (var d in @Model.ListaDemotow)
    {
@@ -16,33 +11,38 @@
     {
         foreach (var s in d.slajdy)
         {
-           
-
-            
             <table>
                 <tr>
-                   <td><img src="@s.ObrazekUrl"/> </td> 
-                    <td>@s.Opis </td> 
+                   
+                   <td><img src="@s.ObrazekUrl"/></td> 
+                   <td class="td2">@s.Opis</td> 
+
                 </tr>
-                
+                <tr>
+                     <td>
+                   <button type="button" class="btn btn-sm btn-primary">Fajny!</button>
+                        </td>
+                </tr>
             </table>
-          
-             
-           <br />
-              
-    
         }      
     }
     else
     {
-         <a href="@d.AdresUrl" > 
-           <img src="@d.ObrazekUrl"/>
-           </a>
+        <a href="@d.AdresUrl"> 
+        <table>
+            <tr>
+                <td><img src="@d.ObrazekUrl"/></td>
+            </tr>
+             <tr>
+                  <td>
+                   <button type="button" class="btn btn-sm btn-primary">Fajny!</button>
+                  </td>
+                </tr>
+        </table>
+         </a>
+         
+          
     <br />
     }
-      
    }
-
-
-      </div>
-
+</div>
