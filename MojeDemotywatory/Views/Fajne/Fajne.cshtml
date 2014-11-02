@@ -1,0 +1,31 @@
+﻿@model MojeDemotywatory.Models.Demotywatory
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="srodek">
+   
+@foreach (var d in @Model.ListaDemotow)
+   {   
+        <table>
+            <tr>
+               
+                <td>
+                     <a href="@d.AdresUrl"> 
+                    <img src="@d.ObrazekUrl"/>
+                         </a>
+                         </td>
+                
+            </tr>
+             <tr>
+                  <td>
+                   <a class="btn btn-primary" href="@Url.Action("Usun", "Fajne", new { adres = @d.ObrazekUrl })">Usuń</a> 
+                  </td>
+                </tr>
+        </table>
+         
+          
+    <br />
+}
+   
+</div>

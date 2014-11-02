@@ -27,31 +27,6 @@ namespace MojeDemotywatory.Controllers
             return View(model);
         }
 
-        public ActionResult Dodaj(string adres)
-        {
-            var model = new Demotywatory();
-
-            var baza = new Baza("baza2");
-
-            baza.Dodaj(adres);
-
-            List<Mem> listaMemow = new List<Mem>();
-
-            foreach (var d in baza.Odczytaj())
-            {
-                listaMemow.Add(new Mem
-                {
-                    AdresUrl = d,
-                    ObrazekUrl = d,
-                    czySlajdy = false,
-                });
-            }
-
-            model.ListaDemotow = listaMemow;
-
-            return View("Index", model);
-        }
-
         public ActionResult Nastepna(string strona)
         {
             var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
@@ -80,27 +55,7 @@ namespace MojeDemotywatory.Controllers
             return View("Index", model);
         }
 
-        public ActionResult Ulubione()
-        {
-            var model = new Demotywatory();
-
-            var baza = new Baza("baza2");
-
-            List<Mem> listaMemow = new List<Mem>();
-
-            foreach (var d in baza.Odczytaj())
-            {
-                listaMemow.Add(new Mem{
-                    AdresUrl = d,
-                    ObrazekUrl = d,
-                    czySlajdy = false,
-                });
-            }
-
-            model.ListaDemotow = listaMemow;
-
-            return View("Index", model);
-        }
+      
 
     }
 }

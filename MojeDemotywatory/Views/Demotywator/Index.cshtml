@@ -19,8 +19,8 @@
 
                 </tr>
                 <tr>
-                     <td>
-                   <button type="button" class="btn btn-sm btn-primary">Fajny!</button>
+                       <td>
+                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { mem = @s.ObrazekUrl })">Fajny</a> 
                         </td>
                 </tr>
             </table>
@@ -28,18 +28,24 @@
     }
     else
     {
-        <a href="@d.AdresUrl"> 
+        
         <table>
             <tr>
-                <td><img src="@d.ObrazekUrl"/></td>
+               
+                <td>
+                     <a href="@d.AdresUrl"> 
+                    <img src="@d.ObrazekUrl"/>
+                         </a>
+                         </td>
+                
             </tr>
              <tr>
                   <td>
-                   <button type="button" class="btn btn-sm btn-primary">Fajny!</button>
+                   <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @d.ObrazekUrl})">Fajny</a> 
                   </td>
                 </tr>
         </table>
-         </a>
+         
          
           
     <br />

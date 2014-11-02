@@ -30,24 +30,40 @@ namespace BazaLite
             strumienPlik.Close();
         }
 
-        public IEnumerable<string> Odczytaj()
+        public void Usun(string linia)
         {
+            var linie = this.Odczytaj();
+
+            var strumienPlik = new StreamWriter(this.NazwaBazy, false);
+
+            foreach (var l in linie)
+            {
+                if ( l == linia) continue;
+                
+                strumienPlik.WriteLine(l);
+            }
+
+            strumienPlik.Close();
+        }
+
+        public List<string> Odczytaj()
+        {
+            var rezult = new List<string>();
+
             using (var strumienOdczytu = new StreamReader(this.NazwaBazy))
             {
-                while (true)
-                {
                     var linia = strumienOdczytu.ReadLine();
 
-                    if (!string.IsNullOrEmpty(linia))
+                    while (!string.IsNullOrEmpty(linia))
                     {
-                        yield return linia;
+                        rezult.Add(linia);
+                        linia = strumienOdczytu.ReadLine();
                     }
-                    else
-                    {
-                        break;
-                    }
-                }
+
+                    strumienOdczytu.Close();
             }
+
+            return rezult;
         }
     }
 }
