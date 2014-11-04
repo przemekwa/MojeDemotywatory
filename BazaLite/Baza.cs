@@ -34,7 +34,7 @@ namespace BazaLite
         {
             var linie = this.Odczytaj();
 
-            var strumienPlik = new StreamWriter(this.NazwaBazy, false);
+            var strumienPlik = new StreamWriter(this.NazwaBazy);
 
             foreach (var l in linie)
             {
@@ -46,7 +46,7 @@ namespace BazaLite
             strumienPlik.Close();
         }
 
-        public List<string> Odczytaj()
+        public IEnumerable<string> Odczytaj()
         {
             var rezult = new List<string>();
 
