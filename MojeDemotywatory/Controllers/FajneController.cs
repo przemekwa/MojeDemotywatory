@@ -1,4 +1,5 @@
 ﻿using BazaLite;
+using MojeDemotywatory.Infrastructure;
 using MojeDemotywatory.Models;
 using MojeDemotywatoryApi;
 using System;
@@ -14,17 +15,18 @@ namespace MojeDemotywatory.Controllers
         //
         // GET: /Fajne/
 
+         [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Fajne()
         {
             var model = new Demotywatory();
 
             var baza = new Baza("baza2");
 
-            List<Mem> listaMemow = new List<Mem>();
+            List<Demotywator> listaMemow = new List<Demotywator>();
 
             foreach (var d in baza.Odczytaj())
             {
-                listaMemow.Add(new Mem
+                listaMemow.Add(new Demotywator
                 {
                     AdresUrl = d,
                     ObrazekUrl = d,
@@ -37,19 +39,20 @@ namespace MojeDemotywatory.Controllers
             return View("Fajne", model);
         }
 
+       [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Dodaj(string adres)
         {
             var model = new Demotywatory();
 
             var baza = new Baza("baza2");
 
-            List<Mem> listaMemow = new List<Mem>();
+            List<Demotywator> listaMemow = new List<Demotywator>();
 
             baza.Dodaj(adres);
 
             foreach (var d in baza.Odczytaj())
             {
-                listaMemow.Add(new Mem
+                listaMemow.Add(new Demotywator
                 {
                     AdresUrl = d,
                     ObrazekUrl = d,
@@ -62,6 +65,7 @@ namespace MojeDemotywatory.Controllers
             return View("Fajne", model);
         }
 
+         [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Usun(string adres)
         {
             var model = new Demotywatory();
@@ -70,11 +74,11 @@ namespace MojeDemotywatory.Controllers
 
             baza.Usun(adres);
 
-            List<Mem> listaMemow = new List<Mem>();
+            List<Demotywator> listaMemow = new List<Demotywator>();
 
             foreach (var d in baza.Odczytaj())
             {
-                listaMemow.Add(new Mem
+                listaMemow.Add(new Demotywator
                 {
                     AdresUrl = d,
                     ObrazekUrl = d,

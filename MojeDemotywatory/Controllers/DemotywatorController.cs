@@ -16,33 +16,38 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Index()
         {
-            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var test = new DemotywatoryApi("http://demotywatory.pl/");
 
             var model = new Demotywatory();
             
             model.AktualnaStrona = 1;
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStron(model.AktualnaStrona);
+            model.ListaDemotow = test.PobierzDemotywatoryZeStron(model.AktualnaStrona).ToList();
 
             return View(model);
         }
 
         public ActionResult Nastepna(string strona)
         {
-            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            if (string.IsNullOrEmpty(strona))
+            {
+                throw new ArgumentNullException("strona");
+            }
+
+            var test = new DemotywatoryApi("http://demotywatory.pl/");
 
             var model = new Demotywatory();
 
             model.AktualnaStrona = Int32.Parse(strona);
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(++model.AktualnaStrona);
+            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(++model.AktualnaStrona).ToList();
 
             return View("Index", model);
         }
 
         public ActionResult Losowa(string strona)
         {
-            var test = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var test = new DemotywatoryApi("http://demotywatory.pl/");
 
             var model = new Demotywatory();
 
@@ -50,7 +55,7 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(model.AktualnaStrona);
+            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(model.AktualnaStrona).ToList();
 
             return View("Index", model);
         }

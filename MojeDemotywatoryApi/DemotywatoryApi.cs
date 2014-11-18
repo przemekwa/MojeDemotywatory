@@ -7,16 +7,16 @@ using HtmlAgilityPack;
 
 namespace MojeDemotywatoryApi
 {
-    public class FabrykaDemotywatorow
+    public class DemotywatoryApi
     {
         private string adresWWW;
 
-        public FabrykaDemotywatorow(string Url)
+        public DemotywatoryApi(string Url)
         {
             this.adresWWW = Url;
         }
 
-        public List<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
+        public IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
         {
             var dobryAdres = adresWWW + adres;
 
@@ -56,9 +56,9 @@ namespace MojeDemotywatoryApi
             return rezult;
         }
 
-        public List<Mem> PobierzDemotywatoryZeStron(int page)
+        public IEnumerable<Demotywator> PobierzDemotywatoryZeStron(int page)
         {
-            var rezult = new List<Mem>();
+            var rezult = new List<Demotywator>();
 
             for (int i=1;i<=page;i++)
             {
@@ -68,20 +68,19 @@ namespace MojeDemotywatoryApi
             return rezult;
         }
 
-        public List<Mem> PobierzDemotywatoryZeStrony(int page)
+        public IEnumerable<Demotywator> PobierzDemotywatoryZeStrony(int page)
         {
             return this.ParsujStrone(page).ToList();
         }
 
-
-        public IEnumerable<Mem> PobierzDemotywatoryZGłownej()
+        public IEnumerable<Demotywator> PobierzDemotywatoryZGłownej()
         {
             return this.ParsujStrone(1);
         }
         
-        private IEnumerable<Mem> ParsujStrone(int strona)
+        private IEnumerable<Demotywator> ParsujStrone(int strona)
         {
-            var rezult = new List<Mem>();
+            var rezult = new List<Demotywator>();
 
             HtmlDocument html = new HtmlDocument();
 
@@ -112,7 +111,7 @@ namespace MojeDemotywatoryApi
                     slajdy = this.PobierzDemotywatoryZeSlajdow(link.Attributes["href"].Value);
                 }
 
-                var demot = new Mem
+                var demot = new Demotywator
                 {
                     ObrazekUrl = tagObrazka.Attributes["src"].Value,
                     AdresUrl = adresWWW + link.Attributes["href"].Value,
@@ -126,7 +125,5 @@ namespace MojeDemotywatoryApi
          
             return rezult;
         }
-
-
     }
 }

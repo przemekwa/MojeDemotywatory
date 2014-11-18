@@ -12,7 +12,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZGłownej()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
              var rezult = fabryka.PobierzDemotywatoryZGłownej();
 
@@ -22,28 +22,28 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZeSlajdow()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZeSlajdow("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
-            Assert.AreEqual(rezult.Count, 9);
+            Assert.AreEqual(rezult.ToList().Count, 9);
         }
 
 
         [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZeStron(2);
 
-            Assert.AreEqual(rezult.Count, 20);
+            Assert.AreEqual(rezult.ToList().Count, 20);
         }
 
         [TestMethod]
         public void SprawdzCzySaSlajdy()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZeStron(1);
 
@@ -61,7 +61,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void SprawdźCzyJestAdresObrazka()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZGłownej();
 
@@ -72,7 +72,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void SprawdźCzyJestAdresLinkuZObrazka()
         {
-            var fabryka = new FabrykaDemotywatorow("http://demotywatory.pl/");
+            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
 
             var rezult = fabryka.PobierzDemotywatoryZGłownej();
 

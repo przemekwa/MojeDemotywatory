@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demotywator.cs" />
-    <Compile Include="Fabryka.cs" />
+    <Compile Include="DemotywatoryApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

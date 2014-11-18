@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MojeDemotywatoryApi
 {
 
-    public class Mem
+    public class Demotywator
     {
         public string ObrazekUrl { get; set; }
         public string AdresUrl { get; set; }
@@ -16,7 +16,7 @@ namespace MojeDemotywatoryApi
     }
     
 
-    public class DemotywatorSlajd :Mem
+    public class DemotywatorSlajd : Demotywator
     {
         public string Opis { get; set; }
 
