@@ -6,18 +6,22 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi
 {
-
     public class Demotywator
     {
-        public string ObrazekUrl { get; set; }
-        public string AdresUrl { get; set; }
-        public bool czySlajdy { get; set; }
-        public IEnumerable<DemotywatorSlajd> slajdy { get; set; }
+        public string AdresObrazka { get; set; }
+
+        public string AdresStrony { get; set; }
+
+        public bool CzySaSlajdy { get; set; }
+
+        public string AsdresStronyZeSlajdami { get; set; }
+
+        public IEnumerable<DemotywatorSlajd> ListaSlajdow { get; set; }
+       
     }
-    
+
     public class DemotywatorSlajd : Demotywator
     {
         public string Opis { get; set; }
-
     }
 }

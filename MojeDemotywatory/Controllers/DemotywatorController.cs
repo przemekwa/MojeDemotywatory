@@ -23,7 +23,7 @@ namespace MojeDemotywatory.Controllers
             
             model.AktualnaStrona = 1;
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStron(model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.PobierzZeStron(model.AktualnaStrona).ToList();
 
             return View(model);
         }
@@ -38,11 +38,12 @@ namespace MojeDemotywatory.Controllers
 
             var test = new DemotywatoryApi("http://demotywatory.pl/");
 
+           
             var model = new Demotywatory();
 
             model.AktualnaStrona = Int32.Parse(strona);
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(++model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.PobierzZeStrony(++model.AktualnaStrona).ToList();
 
             return View("Index", model);
         }
@@ -58,7 +59,7 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
 
-            model.ListaDemotow = test.PobierzDemotywatoryZeStrony(model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.PobierzZeStrony(model.AktualnaStrona).ToList();
 
             return View("Index", model);
         }

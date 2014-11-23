@@ -11,15 +11,15 @@
             <tr>
                
                 <td>
-                     <a href="@d.AdresUrl"> 
-                    <img src="@d.ObrazekUrl"/>
+                     <a href="@d.AdresStrony"> 
+                    <img src="@d.AdresObrazka"/>
                          </a>
                          </td>
                 
             </tr>
              <tr>
                   <td>
-                   <a class="btn btn-primary" href="@Url.Action("Usun", "Fajne", new { adres = @d.ObrazekUrl })">Usuń</a> 
+                   <a class="btn btn-primary" href="@Url.Action("Usun", "Fajne", new { adres = @d.AdresObrazka })">Usuń</a> 
                   </td>
                 </tr>
         </table>

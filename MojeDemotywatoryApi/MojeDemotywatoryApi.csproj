@@ -42,8 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiTools.cs" />
     <Compile Include="Demotywator.cs" />
+    <Compile Include="DemotywatorBuldier.cs" />
+    <Compile Include="DemotywatorParser.cs" />
     <Compile Include="DemotywatoryApi.cs" />
+    <Compile Include="NowyDemotywator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

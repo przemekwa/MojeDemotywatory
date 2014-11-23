@@ -9,54 +9,28 @@ namespace MojeDemotywatoryApi
 {
     public class DemotywatoryApi
     {
-        private string adresWWW;
+        private DemotywatorBuldier demotywatorBuldier;
 
-        public DemotywatoryApi(string Url)
+        public DemotywatoryApi(string Url, DemotywatorBuldier demotywatorBuldier = null)
         {
-            this.adresWWW = Url;
-        }
-
-        public IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
-        {
-            var dobryAdres = adresWWW + adres;
-
-            HtmlDocument html = new HtmlDocument();
-
-            var www = new HtmlWeb
+            if (demotywatorBuldier == null)
             {
-                AutoDetectEncoding = true,
-            };
-
-            html = www.Load(dobryAdres);
-
-            var rezult = new List<DemotywatorSlajd>();
-
-            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
-            {
-                var tagObrazka = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
-                
-                var opisObrazka = htmlNode.SelectSingleNode("p");
-
-                if (opisObrazka == null || string.IsNullOrEmpty(opisObrazka.InnerText))  
-                {
-                    opisObrazka = htmlNode.SelectSingleNode("h3"); 
-                }
-
-                if (tagObrazka == null) continue;
-
-                var demot = new DemotywatorSlajd
-                {
-                    ObrazekUrl = tagObrazka.Attributes["src"].Value,
-                    Opis = opisObrazka == null ? "" : opisObrazka.InnerText
-                };
-
-                rezult.Add(demot);
+                this.demotywatorBuldier = new NowyDemotywator();
             }
-            
-            return rezult;
+            else
+            {
+                this.demotywatorBuldier = demotywatorBuldier;
+            }
+
+            if (string.IsNullOrEmpty(Url))
+            {
+                throw new ArgumentNullException("Url", "Adres strony demotywatorów nie może być pusty");
+            }
+
+            ApiTools.AdresWWW = Url;
         }
 
-        public IEnumerable<Demotywator> PobierzDemotywatoryZeStron(int page)
+        public IEnumerable<Demotywator> PobierzZeStron(int page)
         {
             var rezult = new List<Demotywator>();
 
@@ -68,12 +42,12 @@ namespace MojeDemotywatoryApi
             return rezult;
         }
 
-        public IEnumerable<Demotywator> PobierzDemotywatoryZeStrony(int page)
+        public IEnumerable<Demotywator> PobierzZeStrony(int page)
         {
-            return this.ParsujStrone(page).ToList();
+            return this.ParsujStrone(page);
         }
 
-        public IEnumerable<Demotywator> PobierzDemotywatoryZGłownej()
+        public IEnumerable<Demotywator> PobierzZGłownej()
         {
             return this.ParsujStrone(1);
         }
@@ -82,45 +56,15 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new List<Demotywator>();
 
-            HtmlDocument html = new HtmlDocument();
-
-            var www = new HtmlWeb
-            {
-                AutoDetectEncoding = true,
-            };
-            
-            html = www.Load(adresWWW + "page/" + strona);
-
+            var html = ApiTools.ŁadujStronę(ApiTools.AdresWWW + "page/" + strona);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var czySlajdy = htmlNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
+                var demotywator = new DemotywatorParser(demotywatorBuldier, ApiTools.AdresWWW).Parsuj(htmlNode);
 
-                var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
+                if (demotywator == null) continue;
 
-                if (link == null) continue;
-
-                var tagObrazka = link.SelectSingleNode("img");
-
-                if (tagObrazka == null) continue;
-
-                IEnumerable<DemotywatorSlajd> slajdy = null;
-
-                if (czySlajdy)
-                {
-                    slajdy = this.PobierzDemotywatoryZeSlajdow(link.Attributes["href"].Value);
-                }
-
-                var demot = new Demotywator
-                {
-                    ObrazekUrl = tagObrazka.Attributes["src"].Value,
-                    AdresUrl = adresWWW + link.Attributes["href"].Value,
-                    czySlajdy = czySlajdy,
-                    slajdy = slajdy
-                };
-
-                rezult.Add(demot);
-               
+                rezult.Add(demotywator);
             }
          
             return rezult;

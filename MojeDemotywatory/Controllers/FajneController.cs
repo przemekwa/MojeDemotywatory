@@ -28,9 +28,9 @@ namespace MojeDemotywatory.Controllers
             {
                 listaMemow.Add(new Demotywator
                 {
-                    AdresUrl = d,
-                    ObrazekUrl = d,
-                    czySlajdy = false,
+                    AdresStrony = d,
+                    AdresObrazka = d,
+                    CzySaSlajdy = false,
                 });
             }
 
@@ -54,9 +54,9 @@ namespace MojeDemotywatory.Controllers
             {
                 listaMemow.Add(new Demotywator
                 {
-                    AdresUrl = d,
-                    ObrazekUrl = d,
-                    czySlajdy = false,
+                    AdresStrony = d,
+                    AdresObrazka = d,
+                    CzySaSlajdy = false,
                 });
             }
 
@@ -80,9 +80,9 @@ namespace MojeDemotywatory.Controllers
             {
                 listaMemow.Add(new Demotywator
                 {
-                    AdresUrl = d,
-                    ObrazekUrl = d,
-                    czySlajdy = false,
+                    AdresStrony = d,
+                    AdresObrazka = d,
+                    CzySaSlajdy = false,
                 });
             }
 

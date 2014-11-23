@@ -7,20 +7,20 @@
    
 @foreach (var d in @Model.ListaDemotow)
    {
-    if (d.czySlajdy)
+    if (d.CzySaSlajdy)
     {
-        foreach (var s in d.slajdy)
+        foreach (var s in d.ListaSlajdow)
         {
             <table>
                 <tr>
                    
-                   <td><img src="@s.ObrazekUrl"/></td> 
+                   <td><img src="@s.AdresObrazka"/></td> 
                    <td class="td2">@s.Opis</td> 
 
                 </tr>
                 <tr>
                        <td>
-                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ObrazekUrl })">Fajny</a> 
+                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @s.AdresObrazka })">Fajny</a> 
                         </td>
                 </tr>
             </table>
@@ -33,15 +33,15 @@
             <tr>
                
                 <td>
-                     <a href="@d.AdresUrl"> 
-                    <img src="@d.ObrazekUrl"/>
+                     <a href="@d.AdresStrony"> 
+                    <img src="@d.AdresObrazka"/>
                          </a>
                          </td>
                 
             </tr>
              <tr>
                   <td>
-                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.ObrazekUrl})">Fajny</a> 
+                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.AdresObrazka})">Fajny</a> 
                   </td>
                 </tr>
         </table>
