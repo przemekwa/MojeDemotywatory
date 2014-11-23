@@ -132,6 +132,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AutoryzacjaUlubionych.cs" />
+    <Compile Include="Infrastructure\WyjatekZakresu.cs" />
     <Compile Include="Models\Demotywatory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -237,6 +238,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Demotywator\Index.cshtml" />
     <Content Include="Views\Fajne\Fajne.cshtml" />
+    <Content Include="Views\Shared\BrakStrony.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

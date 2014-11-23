@@ -1,4 +1,5 @@
 ﻿using BazaLite;
+using MojeDemotywatory.Infrastructure;
 using MojeDemotywatory.Models;
 using MojeDemotywatoryApi;
 using System;
@@ -26,9 +27,10 @@ namespace MojeDemotywatory.Controllers
 
             return View(model);
         }
-
+        [WyjatekZakresu]
         public ActionResult Nastepna(string strona)
         {
+                       
             if (string.IsNullOrEmpty(strona))
             {
                 throw new ArgumentNullException("strona");
@@ -45,6 +47,7 @@ namespace MojeDemotywatory.Controllers
             return View("Index", model);
         }
 
+        [WyjatekZakresu]
         public ActionResult Losowa(string strona)
         {
             var test = new DemotywatoryApi("http://demotywatory.pl/");

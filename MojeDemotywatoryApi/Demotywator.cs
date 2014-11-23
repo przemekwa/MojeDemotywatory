@@ -15,7 +15,6 @@ namespace MojeDemotywatoryApi
         public IEnumerable<DemotywatorSlajd> slajdy { get; set; }
     }
     
-
     public class DemotywatorSlajd : Demotywator
     {
         public string Opis { get; set; }
