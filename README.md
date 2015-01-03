@@ -15,7 +15,7 @@ MojeDemotywatory pozwalają na:
   -  dodanie do ulubionych(w tej chwli w formie adresu  do pliku) obrazków,
   -  przeglądanie ulubionych.
 
-Szybki start:
+### Szybki start:
 
 MojeDemotywatory składają się z 4 projektów:
 
