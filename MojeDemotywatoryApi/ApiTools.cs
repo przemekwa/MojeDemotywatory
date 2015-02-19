@@ -25,13 +25,13 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new List<DemotywatorSlajd>();
 
-            var włąściwyAdres = AdresWWW + adres;
+            var właściwyAdres = AdresWWW + adres;
 
-            var html = ŁadujStronę(włąściwyAdres);
+            var html = ŁadujStronę(właściwyAdres);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
             {
-                var demotywatorSlajd = new DemotywatorSlajdParser(new NowyDemotywatorSlajd(), włąściwyAdres).Parsuj(htmlNode);
+                var demotywatorSlajd = new DemotywatorSlajdParser(new NowyDemotywatorSlajd(), właściwyAdres).Parsuj(htmlNode);
 
                 if (demotywatorSlajd == null) continue;
                 

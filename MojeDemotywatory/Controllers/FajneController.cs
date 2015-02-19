@@ -15,7 +15,7 @@ namespace MojeDemotywatory.Controllers
         //
         // GET: /Fajne/
 
-         [AutoryzacjaUlubionych("Einstein")]
+        [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Fajne()
         {
             var model = new Demotywatory();
@@ -32,6 +32,7 @@ namespace MojeDemotywatory.Controllers
                     AdresObrazka = d,
                     CzySaSlajdy = false,
                 });
+
             }
 
             model.ListaDemotow = listaMemow;

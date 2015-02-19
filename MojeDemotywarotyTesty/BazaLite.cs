@@ -18,9 +18,6 @@ namespace MojeDemotywarotyTesty
             // TODO: Add constructor logic here
             //
         }
-
-        private TestContext testContextInstance;
-
          
         [TestMethod]
         public void BazaOdczytaj()

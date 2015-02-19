@@ -16,13 +16,12 @@ namespace MojeDemotywatory.Infrastructure
             {
                 var AktualnaStrona = filterContext.HttpContext.Request.QueryString["strona"];
 
-                var model = new Demotywatory();
-
                 filterContext.Result = new ViewResult
                 {
                     ViewName = "BrakStrony",
                     ViewData = new ViewDataDictionary<string>(AktualnaStrona)
                 };
+
 
                 filterContext.ExceptionHandled = true;
             }

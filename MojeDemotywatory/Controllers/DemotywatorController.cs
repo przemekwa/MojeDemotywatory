@@ -27,9 +27,11 @@ namespace MojeDemotywatory.Controllers
 
             return View(model);
         }
-        [WyjatekZakresu]
+        //[WyjatekZakresu]
+        [HandleError(ExceptionType=typeof(NullReferenceException), View="BrakStrony")]   
         public ActionResult Nastepna(string strona)
         {
+         
                        
             if (string.IsNullOrEmpty(strona))
             {

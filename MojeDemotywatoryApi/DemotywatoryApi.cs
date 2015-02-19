@@ -16,7 +16,7 @@ namespace MojeDemotywatoryApi
             if (demotywatorBuldier == null)
             {
                 this.demotywatorBuldier = new NowyDemotywator();
-            }
+            } 
             else
             {
                 this.demotywatorBuldier = demotywatorBuldier;

@@ -16,7 +16,7 @@ namespace MojeDemotywarotyTesty
 
              var rezult = fabryka.PobierzZGłownej();
 
-            Assert.AreEqual(rezult.ToList().Count, 10);
+            Assert.AreEqual(rezult.ToList().Count, 9);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace MojeDemotywarotyTesty
 
             var rezult = fabryka.PobierzZeStron(2);
 
-            Assert.AreEqual(rezult.ToList().Count, 20);
+            Assert.AreEqual(rezult.ToList().Count, 19);
         }
 
         [TestMethod]
