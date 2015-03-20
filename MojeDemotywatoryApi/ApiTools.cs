@@ -9,25 +9,23 @@ namespace MojeDemotywatoryApi
 {
     public static class ApiTools
     {
-        public static string AdresWWW { get; set; }
-
-        public static HtmlDocument ŁadujStronę(string adres)
+        public static HtmlDocument LoadHtml(string addres)
         {
-            var www = new HtmlWeb
+            var htmlDocument = new HtmlWeb
             {
-                AutoDetectEncoding = true,
+                AutoDetectEncoding = true
             };
 
-            return www.Load(adres);
+            return htmlDocument.Load(addres);
         }
 
         public static IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
         {
             var rezult = new List<DemotywatorSlajd>();
 
-            var właściwyAdres = AdresWWW + adres;
+            var właściwyAdres = DemotywatorApi.DemotywatorAddress + adres;
 
-            var html = ŁadujStronę(właściwyAdres);
+            var html = LoadHtml(właściwyAdres);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
             {

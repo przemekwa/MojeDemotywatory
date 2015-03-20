@@ -14,13 +14,13 @@
             <table>
                 <tr>
                    
-                   <td><img src="@s.AdresObrazka"/></td> 
+                   <td><img src="@s.ImgUrl"/></td> 
                    <td class="td2">@s.Opis</td> 
 
                 </tr>
                 <tr>
                        <td>
-                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @s.AdresObrazka })">Fajny</a> 
+                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ImgUrl })">Fajny</a> 
                         </td>
                 </tr>
             </table>
@@ -33,15 +33,15 @@
             <tr>
                
                 <td>
-                     <a href="@d.AdresStrony"> 
-                    <img src="@d.AdresObrazka"/>
+                     <a href="@d.Url"> 
+                    <img src="@d.ImgUrl"/>
                          </a>
                          </td>
                 
             </tr>
              <tr>
                   <td>
-                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.AdresObrazka})">Fajny</a> 
+                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.ImgUrl})">Fajny</a> 
                   </td>
                 </tr>
         </table>

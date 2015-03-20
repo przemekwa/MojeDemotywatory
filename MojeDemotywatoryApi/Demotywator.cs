@@ -8,9 +8,9 @@ namespace MojeDemotywatoryApi
 {
     public class Demotywator
     {
-        public string AdresObrazka { get; set; }
+        public string ImgUrl { get; set; }
 
-        public string AdresStrony { get; set; }
+        public string Url { get; set; }
 
         public bool CzySaSlajdy { get; set; }
 

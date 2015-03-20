@@ -13,9 +13,9 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new Demotywator
             {
-                AdresStrony = this.AdresStrony,
+                Url = this.AdresStrony,
                 CzySaSlajdy = this.CzySaSlajdy,
-                AdresObrazka = this.AdresObrazka,
+                ImgUrl = this.AdresObrazka,
                 ListaSlajdow = this.ListaSlajdów,
                 AsdresStronyZeSlajdami = this.AsdresStronyZeSlajdami
             };
@@ -37,7 +37,7 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new DemotywatorSlajd
             {
-                AdresObrazka = this.AdresObrazka,
+                ImgUrl = this.AdresObrazka,
                 Opis = this.Opis
             };
 

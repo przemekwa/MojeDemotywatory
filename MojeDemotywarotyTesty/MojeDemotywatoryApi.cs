@@ -12,17 +12,17 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZGłownej()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-             var rezult = fabryka.PobierzZGłownej();
+             var rezult = fabryka.GetDemotywatorFromMainPage();
 
-            Assert.AreEqual(rezult.ToList().Count, 9);
+            Assert.AreEqual(rezult.ToList().Count, 7);
         }
 
         [TestMethod]
         public void PobierzDemotywatoryZeSlajdow()
         {
-            ApiTools.AdresWWW = "http://demotywatory.pl/";
+            DemotywatorApi.DemotywatorAddress = "http://demotywatory.pl/";
 
             var rezult = ApiTools.PobierzDemotywatoryZeSlajdow("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
@@ -33,19 +33,19 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzZeStron(2);
+            var rezult = fabryka.GetDemotywatorFromPages(2,2);
 
-            Assert.AreEqual(rezult.ToList().Count, 19);
+            Assert.AreEqual(rezult.ToList().Count, 10);
         }
 
         [TestMethod]
         public void SprawdzCzySaSlajdy()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzZeStron(1);
+            var rezult = fabryka.GetDemotywatorFromPages(1,1);
 
             if (!rezult.Any(x => x.CzySaSlajdy == true))
             {
@@ -61,22 +61,22 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void SprawdźCzyJestAdresObrazka()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzZGłownej();
+            var rezult = fabryka.GetDemotywatorFromMainPage();
 
-            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.AdresObrazka)));
+            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ImgUrl)));
             
         }
 
         [TestMethod]
         public void SprawdźCzyJestAdresLinkuZObrazka()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.PobierzZGłownej();
+            var rezult = fabryka.GetDemotywatorFromMainPage();
 
-            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.AdresStrony)));
+            Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
 
         }
       

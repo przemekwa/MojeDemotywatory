@@ -7,11 +7,14 @@ using HtmlAgilityPack;
 
 namespace MojeDemotywatoryApi
 {
-    public class DemotywatoryApi
+    public class DemotywatorApi : IDemotywatoryApi
     {
+
+        public static string DemotywatorAddress { get; set; }
+
         private DemotywatorBuldier demotywatorBuldier;
 
-        public DemotywatoryApi(string Url, DemotywatorBuldier demotywatorBuldier = null)
+        public DemotywatorApi(string Url, DemotywatorBuldier demotywatorBuldier = null)
         {
             if (demotywatorBuldier == null)
             {
@@ -27,14 +30,14 @@ namespace MojeDemotywatoryApi
                 throw new ArgumentNullException("Url", "Adres strony demotywatorów nie może być pusty");
             }
 
-            ApiTools.AdresWWW = Url;
+            DemotywatorAddress = Url;
         }
 
-        public IEnumerable<Demotywator> PobierzZeStron(int page)
+        public IEnumerable<Demotywator> GetDemotywatorFromPages(int first, int last)
         {
             var rezult = new List<Demotywator>();
 
-            for (int i=1;i<=page;i++)
+            for (int i=first;i<=last;i++)
             {
                 rezult.AddRange(this.ParsujStrone(i));
             }
@@ -42,12 +45,12 @@ namespace MojeDemotywatoryApi
             return rezult;
         }
 
-        public IEnumerable<Demotywator> PobierzZeStrony(int page)
+        public IEnumerable<Demotywator> GetDemotywatorFromPage(int page)
         {
             return this.ParsujStrone(page);
         }
 
-        public IEnumerable<Demotywator> PobierzZGłownej()
+        public IEnumerable<Demotywator> GetDemotywatorFromMainPage()
         {
             return this.ParsujStrone(1);
         }
@@ -56,11 +59,11 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new List<Demotywator>();
 
-            var html = ApiTools.ŁadujStronę(ApiTools.AdresWWW + "page/" + strona);
+            var html = ApiTools.LoadHtml(DemotywatorAddress + "page/" + strona);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var demotywator = new DemotywatorParser(demotywatorBuldier, ApiTools.AdresWWW).Parsuj(htmlNode);
+                var demotywator = new DemotywatorParser(demotywatorBuldier, DemotywatorAddress).Parsuj(htmlNode);
 
                 if (demotywator == null) continue;
 

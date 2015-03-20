@@ -46,7 +46,8 @@
     <Compile Include="Demotywator.cs" />
     <Compile Include="DemotywatorBuldier.cs" />
     <Compile Include="DemotywatorParser.cs" />
-    <Compile Include="DemotywatoryApi.cs" />
+    <Compile Include="DemotywatorApi.cs" />
+    <Compile Include="IDemotywatoryApi.cs" />
     <Compile Include="NowyDemotywator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
