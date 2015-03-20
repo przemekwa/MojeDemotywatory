@@ -14,9 +14,9 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-             var rezult = fabryka.GetDemotywatorFromMainPage();
+             var rezult = fabryka.GetMainPage();
 
-            Assert.AreEqual(rezult.ToList().Count, 7);
+            Assert.AreEqual(rezult.DemotywatorList.Count, 7);
         }
 
         [TestMethod]
@@ -35,26 +35,26 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetDemotywatorFromPages(2,2);
+            var rezult = fabryka.GetPages(1,2);
 
-            Assert.AreEqual(rezult.ToList().Count, 10);
+            Assert.AreEqual(rezult.Count(), 2);
         }
 
         [TestMethod]
         public void SprawdzCzySaSlajdy()
         {
-            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
+           // var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetDemotywatorFromPages(1,1);
+           // var rezult = fabryka.GetPages(1, 1);
 
-            if (!rezult.Any(x => x.CzySaSlajdy == true))
-            {
-                Assert.Fail();
-            }
+           //if (rezult.ToList().Any(l => l.DemotywatorList.Any(d => d.CzySaSlajdy == true)))
+           //{
+           //    Assert.Fail();
+           //}
+           
+          
 
-            var memKtoryMaSlajdy = rezult.Where(x => x.CzySaSlajdy == true);
-
-            Assert.AreEqual(true, memKtoryMaSlajdy.All(x => x.ListaSlajdow != null));
+           
         }
 
 
@@ -63,7 +63,7 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetDemotywatorFromMainPage();
+            var rezult = fabryka.GetMainPage().DemotywatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ImgUrl)));
             
@@ -74,7 +74,7 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetDemotywatorFromMainPage();
+            var rezult = fabryka.GetMainPage().DemotywatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
 

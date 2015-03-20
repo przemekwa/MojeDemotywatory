@@ -8,8 +8,8 @@ namespace MojeDemotywatoryApi
 {
     interface IDemotywatoryApi
     {
-        IEnumerable<Demotywator> GetDemotywatorFromPages(int first, int last);
-        IEnumerable<Demotywator> GetDemotywatorFromPage(int page);
-        IEnumerable<Demotywator> GetDemotywatorFromMainPage();
+        IEnumerable<Page> GetPages(int first, int last);
+        Page GetPage(int page);
+        Page GetMainPage();
     }
 }

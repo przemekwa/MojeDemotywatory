@@ -23,7 +23,7 @@ namespace MojeDemotywatory.Controllers
             
             model.AktualnaStrona = 1;
 
-            model.ListaDemotow = test.GetDemotywatorFromPage(model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.GetPage(model.AktualnaStrona).DemotywatorList;
 
             return View(model);
         }
@@ -45,7 +45,7 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = Int32.Parse(strona);
 
-            model.ListaDemotow = test.GetDemotywatorFromPage(++model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.GetPage(++model.AktualnaStrona).DemotywatorList;
 
             return View("Index", model);
         }
@@ -61,7 +61,7 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
 
-            model.ListaDemotow = test.GetDemotywatorFromPage(model.AktualnaStrona).ToList();
+            model.ListaDemotow = test.GetPage(model.AktualnaStrona).DemotywatorList;
 
             return View("Index", model);
         }

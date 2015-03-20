@@ -9,7 +9,6 @@ namespace MojeDemotywatoryApi
 {
     public class DemotywatorApi : IDemotywatoryApi
     {
-
         public static string DemotywatorAddress { get; set; }
 
         private DemotywatorBuldier demotywatorBuldier;
@@ -33,41 +32,41 @@ namespace MojeDemotywatoryApi
             DemotywatorAddress = Url;
         }
 
-        public IEnumerable<Demotywator> GetDemotywatorFromPages(int first, int last)
+        public IEnumerable<Page> GetPages(int first, int last)
         {
-            var rezult = new List<Demotywator>();
+            var rezult = new List<Page>();
 
             for (int i=first;i<=last;i++)
             {
-                rezult.AddRange(this.ParsujStrone(i));
+                rezult.Add(this.ParsePage(i));
             }
 
             return rezult;
         }
 
-        public IEnumerable<Demotywator> GetDemotywatorFromPage(int page)
+        public Page GetPage(int page)
         {
-            return this.ParsujStrone(page);
+            return this.ParsePage(page);
         }
 
-        public IEnumerable<Demotywator> GetDemotywatorFromMainPage()
+        public Page GetMainPage()
         {
-            return this.ParsujStrone(1);
+            return this.ParsePage(1);
         }
         
-        private IEnumerable<Demotywator> ParsujStrone(int strona)
+        private Page ParsePage(int pageNumber)
         {
-            var rezult = new List<Demotywator>();
+            var rezult = new Page(pageNumber);
 
-            var html = ApiTools.LoadHtml(DemotywatorAddress + "page/" + strona);
+            var html = ApiTools.LoadHtml(DemotywatorAddress + "page/" + pageNumber);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var demotywator = new DemotywatorParser(demotywatorBuldier, DemotywatorAddress).Parsuj(htmlNode);
+                var demotywator = new DemotywatorParser(demotywatorBuldier, DemotywatorAddress).Parse(htmlNode);
 
                 if (demotywator == null) continue;
 
-                rezult.Add(demotywator);
+                rezult.DemotywatorList.Add(demotywator);
             }
          
             return rezult;
