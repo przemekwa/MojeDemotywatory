@@ -22,9 +22,9 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZeSlajdow()
         {
-            DemotywatorApi.DemotywatorSiteUrl = "http://demotywatory.pl/";
+            DemotywatorApi.DomainUrl = "http://demotywatory.pl/";
 
-            var rezult = ApiTools.GetDemotywatorSlajd("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+            var rezult = ApiTools.PobierzDemotywatoryZeSlajdow("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
             Assert.AreEqual(rezult.ToList().Count, 9);
         }

@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using MojeDemotywatoryApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +20,15 @@ namespace MojeDemotywatoryApi
             return htmlDocument.Load(addres);
         }
 
-        public static IEnumerable<DemotywatorSlajd> GetDemotywatorSlajd(string url)
+        public static IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string url)
         {
             var rezult = new List<DemotywatorSlajd>();
 
-            var właściwyAdres = DemotywatorApi.DemotywatorSiteUrl + url;
-
-            var html = LoadHtml(właściwyAdres);
+            var html = LoadHtml(url);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
             {
-                var demotywatorSlajd = new DemotywatorSlajdParser(new NowyDemotywatorSlajd(), właściwyAdres).Parsuj(htmlNode);
+                var demotywatorSlajd = new DemotywatorSlajdParser(new NowyDemotywatorSlajd(), url).Parsuj(htmlNode);
 
                 if (demotywatorSlajd == null) continue;
                 

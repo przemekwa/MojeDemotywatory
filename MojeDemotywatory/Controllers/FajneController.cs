@@ -30,7 +30,6 @@ namespace MojeDemotywatory.Controllers
                 {
                     Url = d,
                     ImgUrl = d,
-                    CzySaSlajdy = false,
                 });
 
             }
@@ -57,7 +56,6 @@ namespace MojeDemotywatory.Controllers
                 {
                     Url = d,
                     ImgUrl = d,
-                    CzySaSlajdy = false,
                 });
             }
 
@@ -83,7 +81,7 @@ namespace MojeDemotywatory.Controllers
                 {
                     Url = d,
                     ImgUrl = d,
-                    CzySaSlajdy = false,
+                  
                 });
             }
 

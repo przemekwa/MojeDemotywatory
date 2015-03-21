@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using MojeDemotywatoryApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,9 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new Demotywator
             {
-                Url = this.AdresStrony,
-                CzySaSlajdy = this.CzySaSlajdy,
-                ImgUrl = this.AdresObrazka,
-                ListaSlajdow = this.ListaSlajdów,
-                AsdresStronyZeSlajdami = this.AsdresStronyZeSlajdami
+                Url = this.Url,
+                ImgUrl = this.ImgUrl,
             };
-
-            if (rezult.CzySaSlajdy)
-            {
-                rezult.ListaSlajdow = ApiTools.GetDemotywatorSlajd(rezult.AsdresStronyZeSlajdami);
-            }
-
 
             return rezult;
             

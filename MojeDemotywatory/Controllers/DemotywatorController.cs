@@ -23,7 +23,10 @@ namespace MojeDemotywatory.Controllers
             
             model.AktualnaStrona = 1;
 
-            model.ListaDemotow = test.GetPage(model.AktualnaStrona).DemotywatorList;
+            var page = test.GetPage(model.AktualnaStrona);
+
+            model.ListaDemotow = page.DemotywatorList.ToList();
+            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
 
             return View(model);
         }
@@ -45,7 +48,12 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = Int32.Parse(strona);
 
-            model.ListaDemotow = test.GetPage(++model.AktualnaStrona).DemotywatorList;
+
+            var page = test.GetPage(++model.AktualnaStrona);
+
+            model.ListaDemotow = page.DemotywatorList.ToList();
+            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
+
 
             return View("Index", model);
         }
@@ -61,7 +69,12 @@ namespace MojeDemotywatory.Controllers
 
             model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
 
-            model.ListaDemotow = test.GetPage(model.AktualnaStrona).DemotywatorList;
+            var page = test.GetPage(model.AktualnaStrona);
+
+            model.ListaDemotow = page.DemotywatorList.ToList();
+            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
+
+            
 
             return View("Index", model);
         }

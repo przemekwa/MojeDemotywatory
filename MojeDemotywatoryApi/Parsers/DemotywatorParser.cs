@@ -38,8 +38,6 @@ namespace MojeDemotywatoryApi
                 throw new ArgumentNullException("XmlNode");
             }
 
-            var czySlajdy = htmllNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
-
             var link = htmllNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
             if (link == null) return null;
@@ -48,14 +46,9 @@ namespace MojeDemotywatoryApi
 
             if (tagObrazka == null) return null;
              
-            if (czySlajdy)
-            {
-                demotywatorBuldier.AsdresStronyZeSlajdami = link.Attributes["href"].Value;
-            }
 
-            demotywatorBuldier.AdresObrazka = tagObrazka.Attributes["src"].Value;
-            demotywatorBuldier.AdresStrony = url + link.Attributes["href"].Value;
-            demotywatorBuldier.CzySaSlajdy = czySlajdy;
+            demotywatorBuldier.ImgUrl = tagObrazka.Attributes["src"].Value;
+            demotywatorBuldier.Url = url + link.Attributes["href"].Value;
 
             return this.demotywatorBuldier.Build();
         }

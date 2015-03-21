@@ -43,8 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiTools.cs" />
-    <Compile Include="Demotywator.cs" />
+    <Compile Include="Models\Demotywator.cs" />
     <Compile Include="Buldiers\DemotywatorBuldier.cs" />
+    <Compile Include="Models\DemotywatorSlajd.cs" />
     <Compile Include="Parsers\DemotywatorParser.cs" />
     <Compile Include="DemotywatorApi.cs" />
     <Compile Include="Buldiers\DemotywatorSlajdBuldier.cs" />

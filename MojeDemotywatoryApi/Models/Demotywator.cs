@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi
 {
-    public abstract class DemotywatorBuldier
+    public class Demotywator
     {
         public string ImgUrl { get; set; }
 
         public string Url { get; set; }
-
-        public string Opis { get; set; }
-
-        public abstract Demotywator Build();
+     
     }
+
+   
 }

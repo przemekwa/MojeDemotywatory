@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MojeDemotywatoryApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,6 @@ namespace MojeDemotywatoryApi
         public string AdresObrazka { get; set; }
 
         public string AdresStrony { get; set; }
-
-        public bool CzySaSlajdy { get; set; }
-
-        public string AsdresStronyZeSlajdami { get; set; }
 
         public string Opis { get; set; }
 

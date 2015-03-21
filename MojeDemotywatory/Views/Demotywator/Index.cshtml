@@ -7,29 +7,7 @@
    
 @foreach (var d in @Model.ListaDemotow)
    {
-    if (d.CzySaSlajdy)
-    {
-        foreach (var s in d.ListaSlajdow)
-        {
-            <table>
-                <tr>
-                   
-                   <td><img src="@s.ImgUrl"/></td> 
-                   <td class="td2">@s.Opis</td> 
-
-                </tr>
-                <tr>
-                       <td>
-                          <a class="btn btn-primary"  href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ImgUrl })">Fajny</a> 
-                        </td>
-                </tr>
-            </table>
-        }      
-    }
-    else
-    {
-        
-        <table>
+    <table>
             <tr>
                
                 <td>
@@ -49,6 +27,23 @@
          
           
     <br />
-    }
+  
    }
+    @foreach (var s in @Model.ListaSjaldowDemotow)
+    {
+        <table>
+            <tr>
+
+                <td><img src="@s.ImgUrl" /></td>
+                <td class="td2">@s.Opis</td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ImgUrl })">Fajny</a>
+                </td>
+            </tr>
+        </table>
+    }
+
 </div>

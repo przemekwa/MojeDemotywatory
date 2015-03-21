@@ -9,7 +9,7 @@ namespace MojeDemotywatoryApi
 {
     public class DemotywatorApi : IDemotywatoryApi
     {
-        public static string DemotywatorSiteUrl { get; set; }
+        public static string DomainUrl { get; set; }
 
         private DemotywatorBuldier demotywatorBuldier;
 
@@ -29,7 +29,7 @@ namespace MojeDemotywatoryApi
                 throw new ArgumentNullException("Url", "Adres strony demotywatorów nie może być pusty");
             }
 
-            DemotywatorSiteUrl = Url;
+            DomainUrl = Url;
         }
 
         public IEnumerable<Page> GetPages(int first, int last)
@@ -58,17 +58,30 @@ namespace MojeDemotywatoryApi
         {
             var rezult = new Page(pageNumber);
 
-            var html = ApiTools.LoadHtml(DemotywatorSiteUrl + "page/" + pageNumber);
+            var html = ApiTools.LoadHtml(DomainUrl + "page/" + pageNumber);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
-                var demotywator = new DemotywatorParser(demotywatorBuldier, DemotywatorSiteUrl).Parse(htmlNode);
+                 var isSlideType = htmlNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
 
-                if (demotywator == null) continue;
+                if (isSlideType)
+                {
+                    var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
-                rezult.DemotywatorList.Add(demotywator);
+                    var url = DemotywatorApi.DomainUrl + link.Attributes["href"].Value;
+
+                    rezult.DemotywatorSlajdList.AddRange(ApiTools.PobierzDemotywatoryZeSlajdow(url).ToList());
+                }
+                else
+                {
+                    var demotywator = new DemotywatorParser(demotywatorBuldier, DomainUrl).Parse(htmlNode);
+
+                    if (demotywator == null) continue;
+
+                    rezult.DemotywatorList.Add(demotywator);
+                }
             }
-        
+         
             return rezult;
         }
     }
