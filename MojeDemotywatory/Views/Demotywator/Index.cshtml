@@ -1,11 +1,11 @@
-﻿@model MojeDemotywatory.Models.Demotywatory
+﻿@model MojeDemotywatory.Models.PageModel
 
 @{
     ViewBag.Title = "Index";
 }
 <div class="srodek">
    
-@foreach (var d in @Model.ListaDemotow)
+@foreach (var d in @Model.DemotywatorList)
    {
     <table>
             <tr>
@@ -29,7 +29,7 @@
     <br />
   
    }
-    @foreach (var s in @Model.ListaSjaldowDemotow)
+    @foreach (var s in @Model.DemotywatorSlajdList)
     {
         <table>
             <tr>

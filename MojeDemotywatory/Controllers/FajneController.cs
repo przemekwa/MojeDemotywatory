@@ -18,7 +18,7 @@ namespace MojeDemotywatory.Controllers
         [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Fajne()
         {
-            var model = new Demotywatory();
+            var model = new PageModel();
 
             var baza = new Baza("baza2");
 
@@ -34,7 +34,7 @@ namespace MojeDemotywatory.Controllers
 
             }
 
-            model.ListaDemotow = listaMemow;
+            model.DemotywatorList = listaMemow;
 
             return View("Fajne", model);
         }
@@ -42,7 +42,7 @@ namespace MojeDemotywatory.Controllers
        [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Dodaj(string adres)
         {
-            var model = new Demotywatory();
+            var model = new PageModel();
 
             var baza = new Baza("baza2");
 
@@ -59,7 +59,7 @@ namespace MojeDemotywatory.Controllers
                 });
             }
 
-            model.ListaDemotow = listaMemow;
+            model.DemotywatorList = listaMemow;
 
             return View("Fajne", model);
         }
@@ -67,7 +67,7 @@ namespace MojeDemotywatory.Controllers
          [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Usun(string adres)
         {
-            var model = new Demotywatory();
+            var model = new PageModel();
 
             var baza = new Baza("baza2");
 
@@ -85,7 +85,7 @@ namespace MojeDemotywatory.Controllers
                 });
             }
 
-            model.ListaDemotow = listaMemow;
+            model.DemotywatorList = listaMemow;
 
             return View("Fajne", model);
         }

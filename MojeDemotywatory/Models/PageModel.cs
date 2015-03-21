@@ -7,10 +7,10 @@ using System.Web;
 
 namespace MojeDemotywatory.Models
 {
-    public class Demotywatory
+    public class PageModel
     {
-        public List<Demotywator> ListaDemotow { get; set; }
-        public List<DemotywatorSlajd> ListaSjaldowDemotow { get; set; }
+        public List<Demotywator> DemotywatorList { get; set; }
+        public List<DemotywatorSlajd> DemotywatorSlajdList { get; set; }
         public int AktualnaStrona { get; set; }
         public int Fajne { get; set; }
     }

@@ -8,13 +8,13 @@ using MojeDemotywatoryApi.Buldiers;
 
 namespace MojeDemotywatoryApi
 {
-    public class DemotywatorApi : IDemotywatoryApi
+    public class DemotywatoryApi : IDemotywatoryApi
     {
         public static string DomainUrl { get; set; }
 
         private Builder demotywatorBuldier;
 
-        public DemotywatorApi(string Url, Builder demotywatorBuldier = null)
+        public DemotywatoryApi(string Url, Builder demotywatorBuldier = null)
         {
             if (demotywatorBuldier == null)
             {
@@ -69,7 +69,7 @@ namespace MojeDemotywatoryApi
                 {
                     var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
-                    var url = DemotywatorApi.DomainUrl + link.Attributes["href"].Value;
+                    var url = DemotywatoryApi.DomainUrl + link.Attributes["href"].Value;
 
                     rezult.DemotywatorSlajdList.AddRange(ApiTools.PobierzDemotywatoryZeSlajdow(url).ToList());
                 }

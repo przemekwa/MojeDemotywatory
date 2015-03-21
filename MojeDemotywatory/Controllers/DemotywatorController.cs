@@ -17,43 +17,38 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Index()
         {
-            var test = new DemotywatorApi("http://demotywatory.pl/");
+            var demotywatoryApi = new DemotywatoryApi("http://demotywatory.pl/");
 
-            var model = new Demotywatory();
+            var model = new PageModel();
             
             model.AktualnaStrona = 1;
 
-            var page = test.GetPage(model.AktualnaStrona);
+            var page = demotywatoryApi.GetPage(model.AktualnaStrona);
 
-            model.ListaDemotow = page.DemotywatorList.ToList();
-            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
+            model.DemotywatorList = page.DemotywatorList.ToList();
+            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View(model);
         }
-        //[WyjatekZakresu]
+        
         [HandleError(ExceptionType=typeof(NullReferenceException), View="BrakStrony")]   
         public ActionResult Nastepna(string strona)
         {
-         
-                       
             if (string.IsNullOrEmpty(strona))
             {
                 throw new ArgumentNullException("strona");
             }
 
-            var test = new DemotywatorApi("http://demotywatory.pl/");
-
+            var demotywatoryApi = new DemotywatoryApi("http://demotywatory.pl/");
            
-            var model = new Demotywatory();
+            var model = new PageModel();
 
             model.AktualnaStrona = Int32.Parse(strona);
 
+            var page = demotywatoryApi.GetPage(++model.AktualnaStrona);
 
-            var page = test.GetPage(++model.AktualnaStrona);
-
-            model.ListaDemotow = page.DemotywatorList.ToList();
-            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
-
+            model.DemotywatorList = page.DemotywatorList.ToList();
+            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View("Index", model);
         }
@@ -61,9 +56,9 @@ namespace MojeDemotywatory.Controllers
         [WyjatekZakresu]
         public ActionResult Losowa(string strona)
         {
-            var test = new DemotywatorApi("http://demotywatory.pl/");
+            var test = new DemotywatoryApi("http://demotywatory.pl/");
 
-            var model = new Demotywatory();
+            var model = new PageModel();
 
             var losowa = new Random();
 
@@ -71,10 +66,8 @@ namespace MojeDemotywatory.Controllers
 
             var page = test.GetPage(model.AktualnaStrona);
 
-            model.ListaDemotow = page.DemotywatorList.ToList();
-            model.ListaSjaldowDemotow = page.DemotywatorSlajdList.ToList();
-
-            
+            model.DemotywatorList = page.DemotywatorList.ToList();
+            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View("Index", model);
         }
