@@ -10,11 +10,11 @@ namespace MojeDemotywatoryApi
 {
     internal class DemotywatorParser
     {
-        private DemotywatorBuldier demotywatorBuldier;
+        private Builder demotywatorBuldier;
 
         private string url;
 
-        public DemotywatorParser(DemotywatorBuldier demotywatorBuldier, string url)
+        public DemotywatorParser(Builder demotywatorBuldier, string url)
         {
             if (demotywatorBuldier == null)
             {

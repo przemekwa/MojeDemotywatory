@@ -12,19 +12,27 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZGłownej()
         {
-            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
+            var api = new DemotywatorApi("http://demotywatory.pl/");
 
-             var rezult = fabryka.GetMainPage();
+             var rezult = api.GetMainPage();
 
-            Assert.AreEqual(rezult.DemotywatorList.Count, 7);
+            Assert.AreEqual(rezult.DemotywatorList.Count, 6);
+        }
+
+        [TestMethod]
+        public void PobierzDemotywatory()
+        {
+            var api = new DemotywatorApi("http://demotywatory.pl/");
+
+            var rezult = api.GetPage(1);
+
+            Assert.AreEqual(rezult.DemotywatorList.Count, 6);
         }
 
         [TestMethod]
         public void PobierzDemotywatoryZeSlajdow()
         {
-            DemotywatorApi.DomainUrl = "http://demotywatory.pl/";
-
-            var rezult = ApiTools.PobierzDemotywatoryZeSlajdow("4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+            var rezult = ApiTools.PobierzDemotywatoryZeSlajdow("http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
             Assert.AreEqual(rezult.ToList().Count, 9);
         }
@@ -33,29 +41,13 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
-            var fabryka = new DemotywatorApi("http://demotywatory.pl/");
+            var api = new DemotywatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetPages(1,2);
+            var rezult = api.GetPages(1,2);
 
             Assert.AreEqual(rezult.Count(), 2);
         }
 
-        [TestMethod]
-        public void SprawdzCzySaSlajdy()
-        {
-           // var fabryka = new DemotywatorApi("http://demotywatory.pl/");
-
-           // var rezult = fabryka.GetPages(1, 1);
-
-           //if (rezult.ToList().Any(l => l.DemotywatorList.Any(d => d.CzySaSlajdy == true)))
-           //{
-           //    Assert.Fail();
-           //}
-           
-          
-
-           
-        }
 
 
         [TestMethod]
@@ -79,8 +71,5 @@ namespace MojeDemotywarotyTesty
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
 
         }
-      
-
-
     }
 }

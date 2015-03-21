@@ -10,23 +10,14 @@ namespace MojeDemotywatoryApi
 {
     internal class DemotywatorSlajdParser
     {
-        private DemotywatorSlajdBuldier demotywatorSlajdBuldier;
+        private SlideBuilder demotywatorSlajdBuldier;
 
-        private string adresWWW;
-
-        public DemotywatorSlajdParser(DemotywatorSlajdBuldier demotywatorSlajdBuldier, string adres)
+        public DemotywatorSlajdParser(SlideBuilder demotywatorSlajdBuldier)
         {
             if (demotywatorSlajdBuldier == null)
             {
                 throw new ArgumentNullException("DemotywatorSlajdBuldier");
             }
-
-            if (string.IsNullOrEmpty(adres))
-            {
-                throw new ArgumentNullException("adres");
-            }
-
-            this.adresWWW = adres;
 
             this.demotywatorSlajdBuldier = demotywatorSlajdBuldier;
         }

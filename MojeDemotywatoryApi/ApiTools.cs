@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using MojeDemotywatoryApi.Buldiers;
 using MojeDemotywatoryApi.Models;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace MojeDemotywatoryApi
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
             {
-                var demotywatorSlajd = new DemotywatorSlajdParser(new NowyDemotywatorSlajd(), url).Parsuj(htmlNode);
+                var demotywatorSlajd = new DemotywatorSlajdParser(new DemotywatorSlideBuilder()).Parsuj(htmlNode);
 
                 if (demotywatorSlajd == null) continue;
                 

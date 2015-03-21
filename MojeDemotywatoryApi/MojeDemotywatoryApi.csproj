@@ -43,15 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiTools.cs" />
+    <Compile Include="Buldiers\DemotywatorBuilder.cs" />
+    <Compile Include="Buldiers\DemotywatorSlideBuilder.cs" />
     <Compile Include="Models\Demotywator.cs" />
-    <Compile Include="Buldiers\DemotywatorBuldier.cs" />
+    <Compile Include="Buldiers\Builder.cs" />
     <Compile Include="Models\DemotywatorSlajd.cs" />
     <Compile Include="Parsers\DemotywatorParser.cs" />
     <Compile Include="DemotywatorApi.cs" />
-    <Compile Include="Buldiers\DemotywatorSlajdBuldier.cs" />
+    <Compile Include="Buldiers\SlideBuilder.cs" />
     <Compile Include="Parsers\DemotywatorSlajdParser.cs" />
     <Compile Include="Interface\IDemotywatoryApi.cs" />
-    <Compile Include="NowyDemotywator.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

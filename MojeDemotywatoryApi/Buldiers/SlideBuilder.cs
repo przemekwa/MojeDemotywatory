@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi
 {
-    public abstract class DemotywatorSlajdBuldier
+    public abstract class SlideBuilder
     {
         public string AdresObrazka { get; set; }
 

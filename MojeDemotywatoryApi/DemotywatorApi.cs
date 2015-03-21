@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using MojeDemotywatoryApi.Buldiers;
 
 namespace MojeDemotywatoryApi
 {
@@ -11,13 +12,13 @@ namespace MojeDemotywatoryApi
     {
         public static string DomainUrl { get; set; }
 
-        private DemotywatorBuldier demotywatorBuldier;
+        private Builder demotywatorBuldier;
 
-        public DemotywatorApi(string Url, DemotywatorBuldier demotywatorBuldier = null)
+        public DemotywatorApi(string Url, Builder demotywatorBuldier = null)
         {
             if (demotywatorBuldier == null)
             {
-                this.demotywatorBuldier = new NowyDemotywator();
+                this.demotywatorBuldier = new DemotywatorBuilder();
             } 
             else
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi
 {
-    public abstract class DemotywatorBuldier
+    public abstract class Builder
     {
         public string ImgUrl { get; set; }
 

@@ -9,10 +9,6 @@ namespace MojeDemotywatoryApi
     public class Demotywator
     {
         public string ImgUrl { get; set; }
-
         public string Url { get; set; }
-     
     }
-
-   
 }
