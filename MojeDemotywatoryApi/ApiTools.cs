@@ -19,11 +19,11 @@ namespace MojeDemotywatoryApi
             return htmlDocument.Load(addres);
         }
 
-        public static IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string adres)
+        public static IEnumerable<DemotywatorSlajd> GetDemotywatorSlajd(string url)
         {
             var rezult = new List<DemotywatorSlajd>();
 
-            var właściwyAdres = DemotywatorApi.DemotywatorAddress + adres;
+            var właściwyAdres = DemotywatorApi.DemotywatorSiteUrl + url;
 
             var html = LoadHtml(właściwyAdres);
 

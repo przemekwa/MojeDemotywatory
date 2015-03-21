@@ -44,11 +44,12 @@
   <ItemGroup>
     <Compile Include="ApiTools.cs" />
     <Compile Include="Demotywator.cs" />
-    <Compile Include="DemotywatorBuldier.cs" />
-    <Compile Include="DemotywatorParser.cs" />
+    <Compile Include="Buldiers\DemotywatorBuldier.cs" />
+    <Compile Include="Parsers\DemotywatorParser.cs" />
     <Compile Include="DemotywatorApi.cs" />
-    <Compile Include="DemotywatorSlajdParser.cs" />
-    <Compile Include="IDemotywatoryApi.cs" />
+    <Compile Include="Buldiers\DemotywatorSlajdBuldier.cs" />
+    <Compile Include="Parsers\DemotywatorSlajdParser.cs" />
+    <Compile Include="Interface\IDemotywatoryApi.cs" />
     <Compile Include="NowyDemotywator.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +57,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

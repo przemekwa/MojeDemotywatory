@@ -22,7 +22,7 @@ namespace MojeDemotywatoryApi
 
             if (rezult.CzySaSlajdy)
             {
-                rezult.ListaSlajdow = ApiTools.PobierzDemotywatoryZeSlajdow(rezult.AsdresStronyZeSlajdami);
+                rezult.ListaSlajdow = ApiTools.GetDemotywatorSlajd(rezult.AsdresStronyZeSlajdami);
             }
 
 
