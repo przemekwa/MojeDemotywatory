@@ -71,8 +71,5 @@ namespace MojeDemotywatory.Controllers
 
             return View("Index", model);
         }
-
-      
-
     }
 }

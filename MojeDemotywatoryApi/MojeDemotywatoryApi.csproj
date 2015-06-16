@@ -53,7 +53,7 @@
     <Compile Include="Buldiers\SlideBuilder.cs" />
     <Compile Include="Parsers\DemotywatorSlajdParser.cs" />
     <Compile Include="Interface\IDemotywatoryApi.cs" />
-    <Compile Include="Page.cs" />
+    <Compile Include="Models\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
