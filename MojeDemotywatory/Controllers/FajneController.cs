@@ -15,7 +15,6 @@ namespace MojeDemotywatory.Controllers
         //
         // GET: /Fajne/
 
-        [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Fajne()
         {
             var model = new PageModel();
@@ -39,7 +38,6 @@ namespace MojeDemotywatory.Controllers
             return View("Fajne", model);
         }
 
-       [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Dodaj(string adres)
         {
             var model = new PageModel();
@@ -64,7 +62,6 @@ namespace MojeDemotywatory.Controllers
             return View("Fajne", model);
         }
 
-         [AutoryzacjaUlubionych("Einstein")]
         public ActionResult Usun(string adres)
         {
             var model = new PageModel();

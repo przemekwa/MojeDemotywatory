@@ -17,14 +17,14 @@ namespace MojeDemotywatoryApi
             {
                 AutoDetectEncoding = true
             };
-
+            
             return htmlDocument.Load(addres);
         }
 
         public static IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string url)
         {
             var rezult = new List<DemotywatorSlajd>();
-
+            
             var html = LoadHtml(url);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))

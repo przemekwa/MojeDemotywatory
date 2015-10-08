@@ -77,7 +77,10 @@ namespace MojeDemotywatoryApi
                 {
                     var demotywator = new DemotywatorParser(demotywatorBuldier, DomainUrl).Parse(htmlNode);
 
-                    if (demotywator == null) continue;
+                    if (demotywator == null)
+                    {
+                        continue;
+                    }
 
                     rezult.DemotywatorList.Add(demotywator);
                 }

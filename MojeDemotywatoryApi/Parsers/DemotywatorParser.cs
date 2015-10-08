@@ -23,7 +23,7 @@ namespace MojeDemotywatoryApi
 
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentNullException("adres");
+                throw new ArgumentNullException("url");
             }
 
             this.url = url;
@@ -48,6 +48,7 @@ namespace MojeDemotywatoryApi
              
 
             demotywatorBuldier.ImgUrl = tagObrazka.Attributes["src"].Value;
+
             demotywatorBuldier.Url = url + link.Attributes["href"].Value;
 
             return this.demotywatorBuldier.Build();
