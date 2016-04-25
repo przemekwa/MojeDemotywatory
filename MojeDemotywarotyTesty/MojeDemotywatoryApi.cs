@@ -26,7 +26,7 @@ namespace MojeDemotywarotyTesty
 
             var rezult = api.GetPage(1);
 
-            Assert.AreEqual(rezult.DemotywatorList.Count, 6);
+            Assert.AreEqual(rezult.DemotywatorList.Count, 7);
         }
 
         [TestMethod]

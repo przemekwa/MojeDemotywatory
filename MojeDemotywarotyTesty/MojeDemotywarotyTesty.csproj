@@ -55,16 +55,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BazaLite.cs" />
+    <Compile Include="Baza.cs" />
     <Compile Include="MojeDemotywatoryApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlLiteTests.cs" />
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MojeDemotywatoryApi\MojeDemotywatoryApi.csproj">
       <Project>{9f152853-1873-47ee-9824-8fc06d017c5b}</Project>
       <Name>MojeDemotywatoryApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MojeDemotywatoryBaza\MojeDemotywatoryBaza.csproj">
+      <Project>{be0a8ae9-ec6f-402b-a9af-101df8cee633}</Project>
+      <Name>MojeDemotywatoryBaza</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

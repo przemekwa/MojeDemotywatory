@@ -1,5 +1,4 @@
-﻿using BazaLite;
-using MojeDemotywatory.Infrastructure;
+﻿using MojeDemotywatory.Infrastructure;
 using MojeDemotywatory.Models;
 using MojeDemotywatoryApi;
 using System;
@@ -19,72 +18,72 @@ namespace MojeDemotywatory.Controllers
         {
             var model = new PageModel();
 
-            var baza = new Baza("baza2");
+            //var baza = null;
 
-            List<Demotywator> listaMemow = new List<Demotywator>();
+            //List<Demotywator> listaMemow = new List<Demotywator>();
 
-            foreach (var d in baza.Odczytaj())
-            {
-                listaMemow.Add(new Demotywator
-                {
-                    Url = d,
-                    ImgUrl = d,
-                });
+            //foreach (var d in baza.Odczytaj())
+            //{
+            //    listaMemow.Add(new Demotywator
+            //    {
+            //        Url = d,
+            //        ImgUrl = d,
+            //    });
 
-            }
+            //}
 
-            model.DemotywatorList = listaMemow;
+            //model.DemotywatorList = listaMemow;
 
-            return View("Fajne", model);
+            return View("Fajne", null);
         }
 
         public ActionResult Dodaj(string adres)
         {
-            var model = new PageModel();
+            //var model = new PageModel();
 
-            var baza = new Baza("baza2");
+            //var baza = new Baza("baza2");
 
-            List<Demotywator> listaMemow = new List<Demotywator>();
+            //List<Demotywator> listaMemow = new List<Demotywator>();
 
-            baza.Dodaj(adres);
+            //baza.Dodaj(adres);
 
-            foreach (var d in baza.Odczytaj())
-            {
-                listaMemow.Add(new Demotywator
-                {
-                    Url = d,
-                    ImgUrl = d,
-                });
-            }
+            //foreach (var d in baza.Odczytaj())
+            //{
+            //    listaMemow.Add(new Demotywator
+            //    {
+            //        Url = d,
+            //        ImgUrl = d,
+            //    });
+            //}
 
-            model.DemotywatorList = listaMemow;
+            //model.DemotywatorList = listaMemow;
 
-            return View("Fajne", model);
+            return View("Fajne", null);
         }
 
         public ActionResult Usun(string adres)
         {
             var model = new PageModel();
 
-            var baza = new Baza("baza2");
+            //var baza = new Baza("baza2");
 
-            baza.Usun(adres);
+            //baza.Usun(adres);
 
-            List<Demotywator> listaMemow = new List<Demotywator>();
+            //List<Demotywator> listaMemow = new List<Demotywator>();
 
-            foreach (var d in baza.Odczytaj())
-            {
-                listaMemow.Add(new Demotywator
-                {
-                    Url = d,
-                    ImgUrl = d,
+            //foreach (var d in baza.Odczytaj())
+            //{
+            //    listaMemow.Add(new Demotywator
+            //    {
+            //        Url = d,
+            //        ImgUrl = d,
                   
-                });
-            }
+            //    });
+            //}
 
-            model.DemotywatorList = listaMemow;
+            //model.DemotywatorList = listaMemow;
 
-            return View("Fajne", model);
+            return View("Fajne", null);
         }
 
 

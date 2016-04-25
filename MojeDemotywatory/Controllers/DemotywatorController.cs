@@ -1,22 +1,27 @@
-﻿using BazaLite;
-using MojeDemotywatory.Infrastructure;
+﻿using MojeDemotywatory.Infrastructure;
 using MojeDemotywatory.Models;
 using MojeDemotywatoryApi;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MojeDemotywatory.Controllers
 {
-    public class DemotywatorController : Controller
+      public class DemotywatorController : Controller
     {
         //
         // GET: /Demotywator/
 
+        private ILogger Log = LogManager.GetCurrentClassLogger();
+
         public ActionResult Index()
         {
+            this.Log.Debug("Start aplikacji");
+
             var demotywatoryApi = new DemotywatoryApi("http://demotywatory.pl/");
 
             var model = new PageModel();
@@ -24,6 +29,8 @@ namespace MojeDemotywatory.Controllers
             model.AktualnaStrona = 1;
 
             var page = demotywatoryApi.GetPage(model.AktualnaStrona);
+
+            this.Log.Debug($"Pobrano {page.DemotywatorList.Count} demotów.");
 
             model.DemotywatorList = page.DemotywatorList.ToList();
             model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
