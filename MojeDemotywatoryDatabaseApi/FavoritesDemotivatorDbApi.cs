@@ -20,5 +20,20 @@ namespace MojeDemotywatoryDatabaseApi
         {
             return this.favoritesDemotivatorContext.Favorites;
         }
+
+        public void Add(Favorites favorites)
+        {
+            this.favoritesDemotivatorContext.Favorites.Add(favorites);
+            this.favoritesDemotivatorContext.SaveChanges();
+        }
+
+        public void Remove(int id)
+        {
+            var favoritesToRemove = this.favoritesDemotivatorContext.Favorites.Single(f => f.Id == id);
+
+            this.favoritesDemotivatorContext.Favorites.Remove(favoritesToRemove);
+
+            this.favoritesDemotivatorContext.SaveChanges();
+        }
     }
 }
