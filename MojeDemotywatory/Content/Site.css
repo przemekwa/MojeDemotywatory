@@ -14,10 +14,6 @@ table {
     
 }
 
-tr {
-
-}
-
 header, footer, nav, section {
     display: block;
 }
@@ -71,4 +67,14 @@ textarea {
 
 .validation-summary-valid {
     display: none;
+}
+
+/* Styles for loading images
+-----------------------------------------------------------*/
+img {
+  width: 600px;
+  height: 450px;
+  background: url(img/loading.gif) 50% no-repeat;
+  border: 1px solid black;
+  border-radius: 5px;
 }

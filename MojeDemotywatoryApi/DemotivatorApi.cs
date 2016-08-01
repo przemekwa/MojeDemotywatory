@@ -34,7 +34,7 @@
         {
             var rezult = new List<Page>();
 
-            for (int i=first;i<=last;i++)
+            for (var i=first;i<=last;i++)
             {
                 rezult.Add(this.ParsePage(i));
             }
@@ -58,7 +58,7 @@
 
             var html = ApiTools.LoadHtml(DomainUrl + "page/" + pageNumber);
 
-            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
+            foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
                  var isSlideType = htmlNode.SelectSingleNode("h2/span[@class=\"gallery_pics_count\"]") != null;
 
@@ -68,7 +68,7 @@
 
                     var url = DomainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotivatorSlajdList.AddRange(ApiTools.PobierzDemotywatoryZeSlajdow(url).ToList());
+                    rezult.DemotivatorSlajdList.AddRange(ApiTools.GetDemovivatorSlides(url).ToList());
                 }
                 else
                 {

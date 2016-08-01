@@ -7,36 +7,36 @@ namespace MojeDemotywatoryApi.Parsers
 {
     internal class DemotivatorSlideParser
     {
-        private SlideBuilder demotywatorSlajdBuldier;
+        private readonly SlideBuilder buldier;
 
-        public DemotivatorSlideParser(SlideBuilder demotywatorSlajdBuldier)
+        public DemotivatorSlideParser(SlideBuilder slideBuilder)
         {
-            if (demotywatorSlajdBuldier == null)
+            if (slideBuilder == null)
             {
-                throw new ArgumentNullException("DemotywatorSlajdBuldier");
+                throw new ArgumentNullException(nameof(slideBuilder));
             }
 
-            this.demotywatorSlajdBuldier = demotywatorSlajdBuldier;
+            this.buldier = slideBuilder;
         }
 
-        public DemotivatorSlide Parsuj(HtmlNode htmlNode)
+        public DemotivatorSlide Parse(HtmlNode htmlNode)
         {
-            var tagObrazka = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
+            var imgTag = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
 
-            var opisObrazka = htmlNode.SelectSingleNode("p");
+            var imgDescription = htmlNode.SelectSingleNode("p");
 
-            if (opisObrazka == null || string.IsNullOrEmpty(opisObrazka.InnerText))
+            if (string.IsNullOrEmpty(imgDescription?.InnerText))
             {
-                opisObrazka = htmlNode.SelectSingleNode("h3");
+                imgDescription = htmlNode.SelectSingleNode("h3");
             }
 
-            if (tagObrazka == null) return null;
+            if (imgTag == null) return null;
 
-            demotywatorSlajdBuldier.ImgUrl = tagObrazka.Attributes["src"].Value;
+            buldier.ImgUrl = imgTag.Attributes["src"].Value;
 
-            demotywatorSlajdBuldier.Description = opisObrazka == null ? "" : opisObrazka.InnerText;
+            buldier.Description = imgDescription == null ? "" : imgDescription.InnerText;
 
-            return this.demotywatorSlajdBuldier.Build();
+            return this.buldier.Build();
         }
     }
 }

@@ -7,69 +7,57 @@ using System.Linq;
 namespace MojeDemotywarotyTesty
 {
     [TestClass]
-    public class DemotivatorApiTests
+    public class DemotivatorApiTests : DemotivatorApiBase
     {
         [TestMethod]
-        public void PobierzDemotywatoryZGłownej()
+        public void Get_Demot_From_Main_Page()
         {
-            var api = new DemotivatorApi("http://demotywatory.pl/");
+            var rezult = this.DemotivatorApi.GetMainPage();
 
-             var rezult = api.GetMainPage();
-
-            Assert.AreEqual(rezult.DemotivatorList.Count, 6);
+            Assert.AreEqual(7, rezult.DemotivatorList.Count);
         }
 
         [TestMethod]
-        public void PobierzDemotywatory()
+        public void Get_Demot_From_First_Page()
         {
-            var api = new DemotivatorApi("http://demotywatory.pl/");
+            var rezult = this.DemotivatorApi.GetPage(1);
 
-            var rezult = api.GetPage(1);
-
-            Assert.AreEqual(rezult.DemotivatorList.Count, 7);
+            Assert.AreEqual(7, rezult.DemotivatorList.Count);
         }
 
         [TestMethod]
-        public void PobierzDemotywatoryZeSlajdow()
+        public void Get_Slide_Demot()
         {
-            var rezult = ApiTools.PobierzDemotywatoryZeSlajdow("http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+            var rezult =
+                ApiTools.GetDemovivatorSlides(
+                    "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
-            Assert.AreEqual(rezult.ToList().Count, 9);
+            Assert.AreEqual(9, rezult.ToList().Count);
         }
 
 
         [TestMethod]
-        public void PobierzDemotywatoryZeStron()
+        public void Get_Range_Of_Pages()
         {
-            var api = new DemotivatorApi("http://demotywatory.pl/");
+            var rezult = this.DemotivatorApi.GetPages(1, 2);
 
-            var rezult = api.GetPages(1,2);
-
-            Assert.AreEqual(rezult.Count(), 2);
+            Assert.AreEqual(2, rezult.Count());
         }
 
-
-
         [TestMethod]
-        public void SprawdźCzyJestAdresObrazka()
+        public void Get_Demotivator_Img_Url()
         {
-            var fabryka = new DemotivatorApi("http://demotywatory.pl/");
-
-            var rezult = fabryka.GetMainPage().DemotivatorList;
+            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ImgUrl)));
-            
         }
 
         [TestMethod]
-        public void SprawdźCzyJestAdresLinkuZObrazka()
+        public void Get_Demotivator_Url()
         {
-            var fabryka = new DemotivatorApi("http://demotywatory.pl/");
-
-            var rezult = fabryka.GetMainPage().DemotivatorList;
+            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
-
         }
     }
 }

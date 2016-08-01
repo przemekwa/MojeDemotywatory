@@ -22,22 +22,12 @@ namespace MojeDemotywatoryApi
             return htmlDocument.Load(addres);
         }
 
-        public static IEnumerable<DemotivatorSlide> PobierzDemotywatoryZeSlajdow(string url)
+        public static IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
         {
-            var rezult = new List<DemotivatorSlide>();
-            
-            var html = LoadHtml(url);
-
-            foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
-            {
-                var demotywatorSlajd = new DemotivatorSlideParser(new DemotivatorSlideBuilder()).Parsuj(htmlNode);
-
-                if (demotywatorSlajd == null) continue;
-                
-                rezult.Add(demotywatorSlajd);
-            }
-
-            return rezult;
+            return LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
+                .Select(htmlNode => new DemotivatorSlideParser(new DemotivatorSlideBuilder()).Parse(htmlNode))
+                .Where(demotywatorSlajd => demotywatorSlajd != null)
+                .ToList();
         }
     }
 }

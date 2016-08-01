@@ -7,48 +7,48 @@ namespace MojeDemotywatoryApi.Parsers
 {
     internal class DemotywatorParser
     {
-        private Builder demotywatorBuldier;
+        private readonly Builder builder;
 
-        private string url;
+        private readonly string url;
 
-        public DemotywatorParser(Builder demotywatorBuldier, string url)
+        public DemotywatorParser(Builder builder, string url)
         {
-            if (demotywatorBuldier == null)
+            if (builder == null)
             {
-                throw new ArgumentNullException("DemotywatorBuldier");
+                throw new ArgumentNullException(nameof(builder));
             }
 
             if (string.IsNullOrEmpty(url))
             {
-                throw new ArgumentNullException("url");
+                throw new ArgumentNullException(nameof(url));
             }
 
             this.url = url;
             
-            this.demotywatorBuldier = demotywatorBuldier;
+            this.builder = builder;
         }
 
         public Demotivator Parse(HtmlNode htmllNode)
         {
             if (htmllNode == null)
             {
-                throw new ArgumentNullException("XmlNode");
+                throw new ArgumentNullException(nameof(htmllNode));
             }
 
             var link = htmllNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
-            if (link == null) return null;
+            var imgTag = link?.SelectSingleNode("img");
 
-            var tagObrazka = link.SelectSingleNode("img");
+            if (imgTag == null)
+            {
+                return null;
+            }
 
-            if (tagObrazka == null) return null;
-             
+            builder.ImgUrl = imgTag.Attributes["src"].Value;
 
-            demotywatorBuldier.ImgUrl = tagObrazka.Attributes["src"].Value;
+            builder.Url = url + link.Attributes["href"].Value;
 
-            demotywatorBuldier.Url = url + link.Attributes["href"].Value;
-
-            return this.demotywatorBuldier.Build();
+            return this.builder.Build();
         }
     }
 
