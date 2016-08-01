@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MojeDemotywatoryApi.Parsers;
 
 namespace MojeDemotywatoryApi
 {
@@ -21,15 +22,15 @@ namespace MojeDemotywatoryApi
             return htmlDocument.Load(addres);
         }
 
-        public static IEnumerable<DemotywatorSlajd> PobierzDemotywatoryZeSlajdow(string url)
+        public static IEnumerable<DemotivatorSlide> PobierzDemotywatoryZeSlajdow(string url)
         {
-            var rezult = new List<DemotywatorSlajd>();
+            var rezult = new List<DemotivatorSlide>();
             
             var html = LoadHtml(url);
 
             foreach (HtmlNode htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]"))
             {
-                var demotywatorSlajd = new DemotywatorSlajdParser(new DemotywatorSlideBuilder()).Parsuj(htmlNode);
+                var demotywatorSlajd = new DemotivatorSlideParser(new DemotivatorSlideBuilder()).Parsuj(htmlNode);
 
                 if (demotywatorSlajd == null) continue;
                 

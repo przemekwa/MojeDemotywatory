@@ -22,7 +22,7 @@ namespace MojeDemotywatory.Controllers
         {
             this.Log.Debug("Start aplikacji");
 
-            var demotywatoryApi = new DemotywatoryApi("http://demotywatory.pl/");
+            var demotywatoryApi = new DemotivatorApi("http://demotywatory.pl/");
 
             var model = new PageModel();
             
@@ -46,7 +46,7 @@ namespace MojeDemotywatory.Controllers
                 throw new ArgumentNullException("strona");
             }
 
-            var demotywatoryApi = new DemotywatoryApi("http://demotywatory.pl/");
+            var demotywatoryApi = new DemotivatorApi("http://demotywatory.pl/");
            
             var model = new PageModel();
 
@@ -63,7 +63,7 @@ namespace MojeDemotywatory.Controllers
         [WyjatekZakresu]
         public ActionResult Losowa(string strona)
         {
-            var test = new DemotywatoryApi("http://demotywatory.pl/");
+            var test = new DemotivatorApi("http://demotywatory.pl/");
 
             var model = new PageModel();
 

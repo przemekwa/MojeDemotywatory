@@ -1,10 +1,7 @@
-﻿            using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using MojeDemotywatoryApi.Models;
 
-namespace MojeDemotywatoryApi
+namespace MojeDemotywatoryApi.Buldiers
 {
     public abstract class Builder
     {
@@ -12,8 +9,8 @@ namespace MojeDemotywatoryApi
 
         public string Url { get; set; }
 
-        public string Opis { get; set; }
+        public string Describe { get; set; }
 
-        public abstract Demotywator Build();
+        public abstract Demotivator Build();
     }
 }

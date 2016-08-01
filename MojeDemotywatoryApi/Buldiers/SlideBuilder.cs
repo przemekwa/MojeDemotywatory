@@ -1,20 +1,15 @@
 ﻿using MojeDemotywatoryApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MojeDemotywatoryApi
+namespace MojeDemotywatoryApi.Buldiers
 {
     public abstract class SlideBuilder
     {
-        public string AdresObrazka { get; set; }
+        public string ImgUrl { get; set; }
 
         public string AdresStrony { get; set; }
 
-        public string Opis { get; set; }
+        public string Description { get; set; }
 
-        abstract public DemotywatorSlajd Build();
+        public abstract DemotivatorSlide Build();
     }
 }

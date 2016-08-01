@@ -12,7 +12,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZGłownej()
         {
-            var api = new DemotywatoryApi("http://demotywatory.pl/");
+            var api = new DemotivatorApi("http://demotywatory.pl/");
 
              var rezult = api.GetMainPage();
 
@@ -22,7 +22,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatory()
         {
-            var api = new DemotywatoryApi("http://demotywatory.pl/");
+            var api = new DemotivatorApi("http://demotywatory.pl/");
 
             var rezult = api.GetPage(1);
 
@@ -41,7 +41,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void PobierzDemotywatoryZeStron()
         {
-            var api = new DemotywatoryApi("http://demotywatory.pl/");
+            var api = new DemotivatorApi("http://demotywatory.pl/");
 
             var rezult = api.GetPages(1,2);
 
@@ -53,7 +53,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void SprawdźCzyJestAdresObrazka()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotivatorApi("http://demotywatory.pl/");
 
             var rezult = fabryka.GetMainPage().DemotywatorList;
 
@@ -64,7 +64,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void SprawdźCzyJestAdresLinkuZObrazka()
         {
-            var fabryka = new DemotywatoryApi("http://demotywatory.pl/");
+            var fabryka = new DemotivatorApi("http://demotywatory.pl/");
 
             var rezult = fabryka.GetMainPage().DemotywatorList;
 
