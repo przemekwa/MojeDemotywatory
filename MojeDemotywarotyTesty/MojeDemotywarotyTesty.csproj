@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MojeDemotywarotyTesty</RootNamespace>
     <AssemblyName>MojeDemotywarotyTesty</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DemotivatorApiBase.cs" />
     <Compile Include="DemotivatorApiTests.cs" />
+    <Compile Include="DemotvatorDataBasesApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,13 @@
       <Project>{9f152853-1873-47ee-9824-8fc06d017c5b}</Project>
       <Name>MojeDemotywatoryApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MojeDemotywatoryDatabaseApi\MojeDemotywatoryDatabaseApi.csproj">
+      <Project>{b939f540-0367-4d95-8ce8-3c33789c892c}</Project>
+      <Name>MojeDemotywatoryDatabaseApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
