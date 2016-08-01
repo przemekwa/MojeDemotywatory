@@ -7,7 +7,7 @@ using System.Linq;
 namespace MojeDemotywarotyTesty
 {
     [TestClass]
-    public class MojeDemotywatoryApi
+    public class DemotivatorApiTests
     {
         [TestMethod]
         public void PobierzDemotywatoryZGłownej()

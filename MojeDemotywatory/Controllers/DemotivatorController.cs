@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace MojeDemotywatory.Controllers
 {
-    public class DemotywatorController : Controller
+    public class DemotivatorController : Controller
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
 
@@ -32,7 +32,7 @@ namespace MojeDemotywatory.Controllers
 
             model.DemotivatorList = page.DemotivatorList.ToList();
 
-            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
+            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
 
             return View(model);
         }
@@ -48,7 +48,7 @@ namespace MojeDemotywatory.Controllers
             var page = this.DemotivatorApi.GetPage(++model.CurrentPage);
 
             model.DemotivatorList = page.DemotivatorList.ToList();
-            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
+            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);
         }
@@ -65,7 +65,7 @@ namespace MojeDemotywatory.Controllers
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
             model.DemotivatorList = page.DemotivatorList.ToList();
-            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
+            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);
         }
