@@ -64,10 +64,6 @@
       <Project>{9f152853-1873-47ee-9824-8fc06d017c5b}</Project>
       <Name>MojeDemotywatoryApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MojeDemotywatoryBaza\MojeDemotywatoryBaza.csproj">
-      <Project>{be0a8ae9-ec6f-402b-a9af-101df8cee633}</Project>
-      <Name>MojeDemotywatoryBaza</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
