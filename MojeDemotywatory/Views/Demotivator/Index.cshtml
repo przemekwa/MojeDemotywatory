@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="srodek">
+<div class="demotivator-center">
    
 @foreach (var d in @Model.DemotivatorList)
    {
@@ -19,7 +19,7 @@
             </tr>
              <tr>
                   <td>
-                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.ImgUrl})">Fajny</a> 
+                   <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @d.ImgUrl})">Ten jest fajny!</a> 
                   </td>
                 </tr>
         </table>
@@ -40,7 +40,7 @@
             </tr>
             <tr>
                 <td>
-                    <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ImgUrl })">Fajny</a>
+                    <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new { adres = @s.ImgUrl })">Ten jest fajny!</a>
                 </td>
             </tr>
         </table>
