@@ -68,7 +68,7 @@
 
                     var url = DomainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotywatorSlajdList.AddRange(ApiTools.PobierzDemotywatoryZeSlajdow(url).ToList());
+                    rezult.DemotivatorSlajdList.AddRange(ApiTools.PobierzDemotywatoryZeSlajdow(url).ToList());
                 }
                 else
                 {
@@ -79,7 +79,7 @@
                         continue;
                     }
 
-                    rezult.DemotywatorList.Add(demotywator);
+                    rezult.DemotivatorList.Add(demotywator);
                 }
             }
          

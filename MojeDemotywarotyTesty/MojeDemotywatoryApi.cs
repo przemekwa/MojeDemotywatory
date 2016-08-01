@@ -16,7 +16,7 @@ namespace MojeDemotywarotyTesty
 
              var rezult = api.GetMainPage();
 
-            Assert.AreEqual(rezult.DemotywatorList.Count, 6);
+            Assert.AreEqual(rezult.DemotivatorList.Count, 6);
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace MojeDemotywarotyTesty
 
             var rezult = api.GetPage(1);
 
-            Assert.AreEqual(rezult.DemotywatorList.Count, 7);
+            Assert.AreEqual(rezult.DemotivatorList.Count, 7);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotivatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetMainPage().DemotywatorList;
+            var rezult = fabryka.GetMainPage().DemotivatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ImgUrl)));
             
@@ -66,7 +66,7 @@ namespace MojeDemotywarotyTesty
         {
             var fabryka = new DemotivatorApi("http://demotywatory.pl/");
 
-            var rezult = fabryka.GetMainPage().DemotywatorList;
+            var rezult = fabryka.GetMainPage().DemotivatorList;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
 

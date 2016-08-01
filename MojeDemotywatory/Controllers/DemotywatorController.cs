@@ -11,10 +11,9 @@ using System.Web.Mvc;
 
 namespace MojeDemotywatory.Controllers
 {
-      public class DemotywatorController : Controller
+    public class DemotywatorController : Controller
     {
-
-          public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
+        public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
 
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
 
@@ -29,17 +28,17 @@ namespace MojeDemotywatory.Controllers
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
-            this.log.Debug($"Pobrano {page.DemotywatorList.Count} demotów.");
+            this.log.Debug($"Pobrano {page.DemotivatorList.Count} demotów.");
 
-            model.DemotivatorList = page.DemotywatorList.ToList();
+            model.DemotivatorList = page.DemotivatorList.ToList();
 
-            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
 
             return View(model);
         }
-        
-        [HandleError(ExceptionType=typeof(NullReferenceException), View="BrakStrony")]   
-        public ActionResult Nastepna(int pageNumber)
+
+        [HandleError(ExceptionType = typeof(NullReferenceException), View = "BrakStrony")]
+        public ActionResult GetNextPage(int pageNumber)
         {
             var model = new PageModel
             {
@@ -48,14 +47,14 @@ namespace MojeDemotywatory.Controllers
 
             var page = this.DemotivatorApi.GetPage(++model.CurrentPage);
 
-            model.DemotivatorList = page.DemotywatorList.ToList();
-            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorList = page.DemotivatorList.ToList();
+            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);
         }
 
         [OutOfRangeSlide]
-        public ActionResult Losowa(string strona)
+        public ActionResult GetRandomPage()
         {
             var model = new PageModel();
 
@@ -65,8 +64,8 @@ namespace MojeDemotywatory.Controllers
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
-            model.DemotivatorList = page.DemotywatorList.ToList();
-            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorList = page.DemotivatorList.ToList();
+            model.DemotivatorSlajdList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);
         }
