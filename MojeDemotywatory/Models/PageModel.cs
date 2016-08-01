@@ -9,9 +9,9 @@ namespace MojeDemotywatory.Models
 {
     public class PageModel
     {
-        public List<Demotivator> DemotywatorList { get; set; }
-        public List<DemotivatorSlide> DemotywatorSlajdList { get; set; }
-        public int AktualnaStrona { get; set; }
+        public List<Demotivator> DemotivatorList { get; set; }
+        public List<DemotivatorSlide> DemotivatorSlajdList { get; set; }
+        public int CurrentPage { get; set; }
         public int Fajne { get; set; }
     }
 }

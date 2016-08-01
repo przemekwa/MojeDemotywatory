@@ -13,68 +13,60 @@ namespace MojeDemotywatory.Controllers
 {
       public class DemotywatorController : Controller
     {
-        //
-        // GET: /Demotywator/
 
-        private ILogger Log = LogManager.GetCurrentClassLogger();
+          public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
+
+        private readonly ILogger log = LogManager.GetCurrentClassLogger();
 
         public ActionResult Index()
         {
-            this.Log.Debug("Start aplikacji");
+            this.log.Debug("Start aplikacji");
 
-            var demotywatoryApi = new DemotivatorApi("http://demotywatory.pl/");
+            var model = new PageModel
+            {
+                CurrentPage = 1
+            };
 
-            var model = new PageModel();
-            
-            model.AktualnaStrona = 1;
+            var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
-            var page = demotywatoryApi.GetPage(model.AktualnaStrona);
+            this.log.Debug($"Pobrano {page.DemotywatorList.Count} demotów.");
 
-            this.Log.Debug($"Pobrano {page.DemotywatorList.Count} demotów.");
+            model.DemotivatorList = page.DemotywatorList.ToList();
 
-            model.DemotywatorList = page.DemotywatorList.ToList();
-            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View(model);
         }
         
         [HandleError(ExceptionType=typeof(NullReferenceException), View="BrakStrony")]   
-        public ActionResult Nastepna(string strona)
+        public ActionResult Nastepna(int pageNumber)
         {
-            if (string.IsNullOrEmpty(strona))
+            var model = new PageModel
             {
-                throw new ArgumentNullException("strona");
-            }
+                CurrentPage = pageNumber
+            };
 
-            var demotywatoryApi = new DemotivatorApi("http://demotywatory.pl/");
-           
-            var model = new PageModel();
+            var page = this.DemotivatorApi.GetPage(++model.CurrentPage);
 
-            model.AktualnaStrona = Int32.Parse(strona);
-
-            var page = demotywatoryApi.GetPage(++model.AktualnaStrona);
-
-            model.DemotywatorList = page.DemotywatorList.ToList();
-            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorList = page.DemotywatorList.ToList();
+            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View("Index", model);
         }
 
-        [WyjatekZakresu]
+        [OutOfRangeSlide]
         public ActionResult Losowa(string strona)
         {
-            var test = new DemotivatorApi("http://demotywatory.pl/");
-
             var model = new PageModel();
 
             var losowa = new Random();
 
-            model.AktualnaStrona = losowa.Next(model.AktualnaStrona, 10000);
+            model.CurrentPage = losowa.Next(model.CurrentPage, 10000);
 
-            var page = test.GetPage(model.AktualnaStrona);
+            var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
-            model.DemotywatorList = page.DemotywatorList.ToList();
-            model.DemotywatorSlajdList = page.DemotywatorSlajdList.ToList();
+            model.DemotivatorList = page.DemotywatorList.ToList();
+            model.DemotivatorSlajdList = page.DemotywatorSlajdList.ToList();
 
             return View("Index", model);
         }

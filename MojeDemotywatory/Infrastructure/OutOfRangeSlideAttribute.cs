@@ -8,18 +8,18 @@ using System.Web.Mvc;
 
 namespace MojeDemotywatory.Infrastructure
 {
-    public class WyjatekZakresu : FilterAttribute, IExceptionFilter
+    public class OutOfRangeSlideAttribute : FilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
         {
             if (!filterContext.ExceptionHandled && filterContext.Exception is NullReferenceException)
             {
-                var AktualnaStrona = filterContext.HttpContext.Request.QueryString["strona"];
+                var currentPage = filterContext.HttpContext.Request.QueryString["strona"];
 
                 filterContext.Result = new ViewResult
                 {
                     ViewName = "BrakStrony",
-                    ViewData = new ViewDataDictionary<string>(AktualnaStrona)
+                    ViewData = new ViewDataDictionary<string>(currentPage)
                 };
 
 
