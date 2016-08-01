@@ -246,7 +246,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Demotivator\Index.cshtml" />
-    <Content Include="Views\Shared\BrakStrony.cshtml" />
+    <Content Include="Views\Shared\PageNotExist.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

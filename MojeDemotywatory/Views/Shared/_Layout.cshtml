@@ -25,7 +25,7 @@
           <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Losowa strona", "GetRandomPage", "Demotywator")</li>
             <li>@Html.ActionLink("Następna strona", "GetNextPage", "Demotywator", new { pageNumber = @Model.CurrentPage },null)</li>
-             <li> <a href="/Fajne/Fajne">Fajne! <span class="badge">@Model.Fajne</span></a></li>
+             <li> <a href="/Fajne/Fajne">Fajne! <span class="badge">@Model.FavoriteCount</span></a></li>
 
           </ul>
           

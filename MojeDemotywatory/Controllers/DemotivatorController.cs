@@ -1,16 +1,14 @@
-﻿using MojeDemotywatory.Infrastructure;
-using MojeDemotywatory.Models;
-using MojeDemotywatoryApi;
-using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Web;
-using System.Web.Mvc;
-
+﻿
 namespace MojeDemotywatory.Controllers
 {
+    using Infrastructure;
+    using Models;
+    using MojeDemotywatoryApi;
+    using NLog;
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+
     public class DemotivatorController : Controller
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
@@ -37,7 +35,7 @@ namespace MojeDemotywatory.Controllers
             return View(model);
         }
 
-        [HandleError(ExceptionType = typeof(NullReferenceException), View = "BrakStrony")]
+        [HandleError(ExceptionType = typeof(NullReferenceException), View = "PageNotExist")]
         public ActionResult GetNextPage(int pageNumber)
         {
             var model = new PageModel
@@ -48,6 +46,7 @@ namespace MojeDemotywatory.Controllers
             var page = this.DemotivatorApi.GetPage(++model.CurrentPage);
 
             model.DemotivatorList = page.DemotivatorList.ToList();
+
             model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);
@@ -58,13 +57,14 @@ namespace MojeDemotywatory.Controllers
         {
             var model = new PageModel();
 
-            var losowa = new Random();
+            var random = new Random();
 
-            model.CurrentPage = losowa.Next(model.CurrentPage, 10000);
+            model.CurrentPage = random.Next(model.CurrentPage, 10000);
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
 
             model.DemotivatorList = page.DemotivatorList.ToList();
+
             model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
 
             return View("Index", model);

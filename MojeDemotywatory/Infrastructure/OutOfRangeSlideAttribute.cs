@@ -1,13 +1,9 @@
-﻿using MojeDemotywatory.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-
+﻿
 namespace MojeDemotywatory.Infrastructure
 {
+    using System;
+    using System.Web.Mvc;
+
     public class OutOfRangeSlideAttribute : FilterAttribute, IExceptionFilter
     {
         public void OnException(ExceptionContext filterContext)
@@ -18,10 +14,9 @@ namespace MojeDemotywatory.Infrastructure
 
                 filterContext.Result = new ViewResult
                 {
-                    ViewName = "BrakStrony",
+                    ViewName = "PageNotExist",
                     ViewData = new ViewDataDictionary<string>(currentPage)
                 };
-
 
                 filterContext.ExceptionHandled = true;
             }

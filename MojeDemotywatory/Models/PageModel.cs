@@ -1,12 +1,11 @@
-﻿using MojeDemotywatoryApi;
-using MojeDemotywatoryApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 
 namespace MojeDemotywatory.Models
 {
+    using System.Collections.Generic;
+
+    using MojeDemotywatoryApi.Models;
+
     public class PageModel
     {
         public List<Demotivator> DemotivatorList { get; set; }
@@ -15,6 +14,6 @@ namespace MojeDemotywatory.Models
 
         public int CurrentPage { get; set; }
 
-        public int Fajne { get; set; }
+        public int FavoriteCount { get; set; }
     }
 }
