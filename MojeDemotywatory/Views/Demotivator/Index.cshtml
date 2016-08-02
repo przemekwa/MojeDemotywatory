@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
+
+
 <div class="demotivator-center">
 
     @foreach (var d in @Model.DemotivatorList)
@@ -12,7 +14,7 @@
 
                 <td>
                     <a href="@d.Url">
-                        <img onload="" src="@d.ImgUrl"/>
+                        <img src="@d.ImgUrl" />
                     </a>
                 </td>
 
@@ -47,15 +49,3 @@
     }
 
 </div>
-
-<script>
-
-  
-    var image = document.images[0];
-    var downloadingImage = new Image();
-    downloadingImage.onload = function () {
-        image.src = this.src;
-    };
-    downloadingImage.src = "http://an.image/to/aynchrounously/download.jpg";
-
-</script>
