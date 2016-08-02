@@ -16,7 +16,7 @@ namespace MojeDemotywatory.Controllers
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
 
-        public FavoritesDemotivatorDbApi FavoritesDemotivatorDbApi { get; set; } = new FavoritesDemotivatorDbApi();
+        public FavoritesDemotivatorDbApi FavoritesDemotivatorDbApi { get; private set; } = new FavoritesDemotivatorDbApi();
 
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
 

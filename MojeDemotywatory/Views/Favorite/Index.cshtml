@@ -1,0 +1,28 @@
+﻿@model MojeDemotywatory.Models.PageModel
+
+<div class="demotivator-center">
+
+    @foreach (var d in @Model.DemotivatorList)
+    {
+        <table>
+            <tr>
+
+                <td>
+                    <a href="@d.Url">
+                        <img onload="" src="@d.ImgUrl" />
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("Remove", "Favorite", new {url = @d.Url})">Znudził mi się</a>
+                </td>
+            </tr>
+        </table>
+
+
+        <br />
+    }
+
+</div>

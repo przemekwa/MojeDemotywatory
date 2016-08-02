@@ -17,15 +17,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="/">Demotywatory <span class="badge">@Model.CurrentPage</span></a>
+            <a class="navbar-brand" href="/">
+                Demotywatory
+
+                @if (Model.CurrentPage != 0)
+                {
+                    <span class="badge">@Model.CurrentPage </span>
+                }
+            </a>        
            
 
         </div>
             <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Losowa strona", "GetRandomPage", "Demotywator")</li>
-            <li>@Html.ActionLink("Następna strona", "GetNextPage", "Demotywator", new { pageNumber = @Model.CurrentPage },null)</li>
-             <li> <a href="/Fajne/Fajne">Fajne! <span class="badge">@Model.FavoriteCount</span></a></li>
+            <li>@Html.ActionLink("Losowa strona", "GetRandomPage", "Demotivator")</li>
+            <li>@Html.ActionLink("Następna strona", "GetNextPage", "Demotivator", new { pageNumber = @Model.CurrentPage },null)</li>
+              <li> <a href="./Favorite/Index">Fajne
+                  @if (@Model.FavoriteCount != 0)
+
+                  {
+                      <span class="badge"> @Model.FavoriteCount </span>
+                  }
+              </a>
+              </li>
 
           </ul>
           
