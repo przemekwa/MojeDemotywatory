@@ -2,7 +2,7 @@
 
 namespace MojeDemotywatoryApi.Buldiers
 {
-    public abstract class SlideBuilder
+    internal abstract class SlideBuilder
     {
         public string ImgUrl { get; set; }
 

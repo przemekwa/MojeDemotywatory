@@ -14,7 +14,7 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetMainPage();
 
-            Assert.AreEqual(7, rezult.DemotivatorList.Count);
+            Assert.AreEqual(6, rezult.DemotivatorList.Count);
         }
 
         [TestMethod]
@@ -22,7 +22,7 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetPage(1);
 
-            Assert.AreEqual(7, rezult.DemotivatorList.Count);
+            Assert.AreEqual(6, rezult.DemotivatorList.Count);
         }
 
         [TestMethod]
