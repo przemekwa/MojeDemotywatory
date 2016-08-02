@@ -26,7 +26,8 @@ namespace MojeDemotywatory.Controllers
 
             var model = new PageModel
             {
-                CurrentPage = 1
+                CurrentPage = 1,
+                FavoriteCount = FavoritesDemotivatorDbApi.GetFavoritesDemotivator().Count()
             };
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
@@ -75,7 +76,7 @@ namespace MojeDemotywatory.Controllers
             return View("Index", model);
         }
 
-        public void SaveFavorite(string url, string imgUrl)
+        public ActionResult SaveFavorite(string url, string imgUrl)
         {
             this.FavoritesDemotivatorDbApi.Add(new Favorites
             {
@@ -86,6 +87,8 @@ namespace MojeDemotywatory.Controllers
                     Name = HttpContext.User.Identity.Name
                 }
             });
+
+            return RedirectToAction("Index");
         }
 
     }
