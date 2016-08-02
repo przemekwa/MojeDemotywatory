@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td>
-                    <a class="btn btn-primary" href="@Url.Action("Dodaj", "Fajne", new {adres = @d.ImgUrl})">Ten jest fajny!</a>
+                    <a class="btn btn-primary" href="@Url.Action("SaveFavorite", "Demotivator", new {imgUrl = @d.ImgUrl, url = @d.Url })">Ten jest fajny!</a>
                 </td>
             </tr>
         </table>

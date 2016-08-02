@@ -1,4 +1,7 @@
 ﻿
+using MojeDemotywatoryDatabaseApi;
+using MojeDemotywatoryDatabaseApi.Dto;
+
 namespace MojeDemotywatory.Controllers
 {
     using Infrastructure;
@@ -12,6 +15,8 @@ namespace MojeDemotywatory.Controllers
     public class DemotivatorController : Controller
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
+
+        public FavoritesDemotivatorDbApi FavoritesDemotivatorDbApi { get; set; } = new FavoritesDemotivatorDbApi();
 
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
 
@@ -69,5 +74,19 @@ namespace MojeDemotywatory.Controllers
 
             return View("Index", model);
         }
+
+        public void SaveFavorite(string url, string imgUrl)
+        {
+            this.FavoritesDemotivatorDbApi.Add(new Favorites
+            {
+                ImgUrl = imgUrl,
+                Url = url,
+                User = new User
+                {
+                    Name = HttpContext.User.Identity.Name
+                }
+            });
+        }
+
     }
 }

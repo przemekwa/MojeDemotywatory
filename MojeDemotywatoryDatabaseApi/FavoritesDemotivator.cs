@@ -9,7 +9,7 @@ using MojeDemotywatoryDatabaseApi.Dto;
 
 namespace MojeDemotywatoryDatabaseApi
 {
-    public class FavoritesDemotivatorContext : DbContext
+    internal class FavoritesDemotivatorContext : DbContext
     {
         public DbSet<Favorites> Favorites { get; set; }
 
