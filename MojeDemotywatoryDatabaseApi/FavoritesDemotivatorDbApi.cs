@@ -9,7 +9,7 @@ namespace MojeDemotywatoryDatabaseApi
 {
     public class FavoritesDemotivatorDbApi
     {
-        private FavoritesDemotivatorContext favoritesDemotivatorContext;
+        private readonly FavoritesDemotivatorContext favoritesDemotivatorContext;
 
         public FavoritesDemotivatorDbApi()
         {
