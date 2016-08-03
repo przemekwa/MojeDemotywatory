@@ -8,6 +8,7 @@ namespace MojeDemotywatory.Controllers
     using MojeDemotywatoryApi;
     using MojeDemotywatoryApi.Models;
 
+  
     public class DemotivatorApiController : ApiController
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
@@ -20,6 +21,11 @@ namespace MojeDemotywatory.Controllers
         public Page Get(int id)
         {
             return this.DemotivatorApi.GetPage(id);
+        }
+     
+        public IEnumerable<Page> Get(int first, int last)
+        {
+            return this.DemotivatorApi.GetPages(first,last).ToList();
         }
     }
 }
