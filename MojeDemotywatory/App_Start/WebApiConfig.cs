@@ -8,8 +8,8 @@ namespace MojeDemotywatory
         {
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/page/{id}",
+                defaults: new { controller = "DemotivatorApi", id = RouteParameter.Optional }
             );
         }
     }
