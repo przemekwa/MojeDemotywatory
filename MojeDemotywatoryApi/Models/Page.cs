@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MojeDemotywatoryApi.Models
 {
+    [Serializable]
     public class Page
     {
         public int PageNumber { get; set; }

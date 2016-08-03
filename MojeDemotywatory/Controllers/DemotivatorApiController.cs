@@ -25,7 +25,7 @@ namespace MojeDemotywatory.Controllers
      
         public IEnumerable<Page> Get(int first, int last)
         {
-            return this.DemotivatorApi.GetPages(first,last).ToList();
+            return this.DemotivatorApi.GetPages(first, last);
         }
     }
 }
