@@ -1,4 +1,4 @@
-MojeDemotywatory
+MojeDemotywatory [![Build Status](https://travis-ci.org/przemekwa/MojeDemotywatory.svg?branch=master)](https://travis-ci.org/przemekwa/MojeDemotywatory)
 ================
 
 MojeDemotywatry to projekt w ASP.NET MVC 4, który ma zadanie wyświetlanie demotywatorów (tylko obrazków, bez reklam i innych zbędnych dodatków ze strony demotywatory.pl 
