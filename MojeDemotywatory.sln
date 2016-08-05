@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MojeDemotywatoryDatabaseApi
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MojeDemotywatoryNETCoreApi", "MojeDemotywatoryNETCoreApi\MojeDemotywatoryNETCoreApi.xproj", "{45B4835D-12E4-4D97-901E-0672D1C7F2D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Core", ".NET Core", "{27F1727F-458D-46DC-8186-399E07A44C12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NET Framework", ".NET Framework", "{2757D11A-7127-44F1-AEF0-386C64CA9FB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,5 +112,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26588E0E-3123-453A-BCA9-542467E8154B} = {2757D11A-7127-44F1-AEF0-386C64CA9FB7}
+		{7A7C2406-F0A1-4E9E-82D7-E57EBAC80A68} = {2757D11A-7127-44F1-AEF0-386C64CA9FB7}
+		{9F152853-1873-47EE-9824-8FC06D017C5B} = {2757D11A-7127-44F1-AEF0-386C64CA9FB7}
+		{B939F540-0367-4D95-8CE8-3C33789C892C} = {2757D11A-7127-44F1-AEF0-386C64CA9FB7}
+		{45B4835D-12E4-4D97-901E-0672D1C7F2D1} = {27F1727F-458D-46DC-8186-399E07A44C12}
 	EndGlobalSection
 EndGlobal
