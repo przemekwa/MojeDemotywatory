@@ -1,10 +1,9 @@
-﻿using MojeDemotywatoryNETCoreApi;
-using MojeDemotywatoryNETCoreApi.Buldiers;
+﻿using MojeDemotywatoryNETCoreApi.Buldiers;
 using MojeDemotywatoryNETCoreApi.Interface;
 using MojeDemotywatoryNETCoreApi.Models;
 using MojeDemotywatoryNETCoreApi.Parsers;
 
-namespace MojeDemotywatoryApi
+namespace MojeDemotywatoryNETCoreApi
 {
     using System;
     using System.Collections.Generic;
