@@ -1,50 +1,15 @@
-﻿@model MojeDemotywatory.Models.PageModel
+﻿
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="demotivator-center">
-
-    @foreach (var d in @Model.DemotivatorList)
-    {
-        <table>
-            <tr>
-
-                <td>
-                    <a href="@d.Url">
-                        <img src="@d.ImgUrl" />
-                    </a>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <a class="btn btn-primary" href="@Url.Action("SaveFavorite", "Demotivator", new {imgUrl = @d.ImgUrl, url = @d.Url })">Ten jest fajny!</a>
-                </td>
-            </tr>
-        </table>
 
 
 
-        <br/>
+    <div id="productList" class="demotivator-center">
+        @Html.Partial("_Page");
 
-    }
-    @foreach (var s in @Model.DemotivatorSlideList)
-    {
-        <table>
-            <tr>
+    </div>
 
-                <td><img src="@s.ImgUrl"/></td>
-                <td class="td2">@s.Description</td>
-
-            </tr>
-            <tr>
-                <td>
-                    <a class="btn btn-primary" href="@Url.Action("SaveFavorite", "Demotivator", new {imgUrl = @s.ImgUrl, url = @s.Url })">Ten jest fajny!</a>
-                </td>
-            </tr>
-        </table>
-    }
-
-</div>
+<div id="loading"></div> 

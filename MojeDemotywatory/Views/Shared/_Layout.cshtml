@@ -6,10 +6,43 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
 
+    var page = 1;
+    var _inCallback = false;
 
+    function loadProducts() {
+     
+            
+            page++;
+           
+            $('div#loading').html('<p><img src="/Content/img/loading.gif"></p>');
+
+            $.get("/Demotivator/GetNextPage?pageNumber=" + page, function (data) {
+               $("#productList").append(data);
+
+               $('div#loading').empty();
+               
+            });
+        
+    }
+
+    var dcList = true;
+
+    $(document)
+        .ready(function () {
+            $(window)
+                .scroll(function () {
+                    if ($(window).scrollTop() > $(document).height() - $(window).height()) {
+                        alert("ss");
+                        loadProducts();
+                    }
+                });
+        });
+    </script>
   
-
+  
 </head>
 <body class="tlo">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -50,13 +83,13 @@
         </div>
    </div>
     </div>
-
+   
 
 
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+  
+    @RenderSection("scripts", false)
 </body>
 
    

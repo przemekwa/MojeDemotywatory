@@ -42,8 +42,11 @@ namespace MojeDemotywatory.Controllers
         }
 
         [HandleError(ExceptionType = typeof(NullReferenceException), View = "PageNotExist")]
-        public ActionResult GetNextPage(int pageNumber)
+        public ActionResult GetNextPage(int pageNumber = 1)
         {
+           
+
+
             var model = new PageModel
             {
                 CurrentPage = pageNumber
@@ -54,6 +57,11 @@ namespace MojeDemotywatory.Controllers
             model.DemotivatorList = page.DemotivatorList.ToList();
 
             model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
+
+            if (!Request.IsAjaxRequest())
+            {
+                return PartialView("_Page", model);
+            }
 
             return View("Index", model);
         }

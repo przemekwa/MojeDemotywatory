@@ -15,7 +15,7 @@ namespace MojeDemotywatoryDatabaseApi
 
         public FavoritesDemotivatorContext() : base("FavoritesDemotivator")
         {
-                
+         
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

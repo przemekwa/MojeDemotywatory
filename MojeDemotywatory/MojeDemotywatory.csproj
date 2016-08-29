@@ -273,6 +273,7 @@
     <Content Include="Views\Demotivator\Index.cshtml" />
     <Content Include="Views\Shared\PageNotExist.cshtml" />
     <Content Include="Views\Favorite\Index.cshtml" />
+    <Content Include="Views\Shared\_Page.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
