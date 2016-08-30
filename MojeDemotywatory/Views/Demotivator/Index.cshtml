@@ -4,7 +4,39 @@
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
 
+    var page = 3;
+   
+
+    function loadProducts() {
+        if (page > -1) {
+         
+            page++;
+            $('div#loading').html('<p><img src="/Content/img/loading.gif"></p>');
+            $.get("/Demotivator/GetNextPage?pageNumber=" + page,
+                function (data) {
+                    if (data != '') {
+                        $("#productList").append(data);
+                    } else {
+                        page = -1;
+                    }
+
+                   
+                    $('div#loading').empty();
+                })}};
+    var dcList = true;
+
+    $(document)
+        .ready(function () {
+            $(window)
+                .scroll(function () {
+                    if ($(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+                   loadProducts();
+                    }
+                });
+        });
+</script>
 
 
     <div id="productList" class="demotivator-center">
@@ -12,4 +44,4 @@
 
     </div>
 
-<div id="loading"></div> 
+<div id="loading" class="demotivator-center"></div> 
