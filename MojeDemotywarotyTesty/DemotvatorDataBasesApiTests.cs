@@ -18,7 +18,7 @@ namespace MojeDemotywarotyTesty
         {
             var db = new FavoritesDemotivatorDbApi();
 
-            var favorite = db.GetFavoritesDemotivator();
+            var favorite = db.Get();
 
             var favoriteses = favorite.ToList();
 
@@ -40,7 +40,7 @@ namespace MojeDemotywarotyTesty
                     }
                 });
 
-                var favorite = db.GetFavoritesDemotivator();
+                var favorite = db.Get();
 
                 var favoriteses = favorite.ToList();
 

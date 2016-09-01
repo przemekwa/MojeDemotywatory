@@ -15,7 +15,7 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Index()
         {
-            var favorites = FavoritesDemotivatorDbApi.GetFavoritesDemotivator().ToList();
+            var favorites = FavoritesDemotivatorDbApi.Get().ToList();
 
             var pageModel = new PageModel
             {
@@ -32,7 +32,7 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Remove(string url)
         {
-            var favorites = FavoritesDemotivatorDbApi.GetFavoritesDemotivator().SingleOrDefault(f => f.Url == url);
+            var favorites = FavoritesDemotivatorDbApi.Get().SingleOrDefault(f => f.Url == url);
 
             if (favorites != null)
             {

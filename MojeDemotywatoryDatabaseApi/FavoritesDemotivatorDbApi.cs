@@ -16,7 +16,7 @@ namespace MojeDemotywatoryDatabaseApi
             this.favoritesDemotivatorContext = new FavoritesDemotivatorContext();
         }
 
-        public IEnumerable<Favorites> GetFavoritesDemotivator()
+        public IEnumerable<Favorites> Get()
         {
             return this.favoritesDemotivatorContext.Favorites;
         }

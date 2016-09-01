@@ -27,7 +27,7 @@ namespace MojeDemotywatory.Controllers
             var model = new PageModel
             {
                 CurrentPage = 1,
-                FavoriteCount = FavoritesDemotivatorDbApi.GetFavoritesDemotivator().Count()
+                FavoriteCount = FavoritesDemotivatorDbApi.Get().Count()
             };
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
@@ -44,17 +44,15 @@ namespace MojeDemotywatory.Controllers
         [HandleError(ExceptionType = typeof(NullReferenceException), View = "PageNotExist")]
         public ActionResult GetNextPage(int pageNumber = 1)
         {
+            var page = this.DemotivatorApi.GetPage(++pageNumber);
+
             var model = new PageModel
             {
-                CurrentPage = pageNumber
+                CurrentPage = pageNumber,
+                DemotivatorList = page.DemotivatorList.ToList(),
+                DemotivatorSlideList = page.DemotivatorSlajdList.ToList()
             };
-
-            var page = this.DemotivatorApi.GetPage(++model.CurrentPage);
-
-            model.DemotivatorList = page.DemotivatorList.ToList();
-
-            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
-
+         
             if (Request.IsAjaxRequest())
             {
                 return PartialView("_Page", model);
