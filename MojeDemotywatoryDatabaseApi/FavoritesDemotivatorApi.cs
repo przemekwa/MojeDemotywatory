@@ -7,7 +7,7 @@ using MojeDemotywatoryDatabaseApi.Dto;
 
 namespace MojeDemotywatoryDatabaseApi
 {
-    public class FavoritesDemotivatorDbApi
+    public class FavoritesDemotivatorDbApi : IFavoritesDemotivatorDbApi
     {
         private readonly FavoritesDemotivatorContext favoritesDemotivatorContext;
 

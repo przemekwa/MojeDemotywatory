@@ -16,7 +16,7 @@ namespace MojeDemotywatory.Controllers
     {
         public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
 
-        public FavoritesDemotivatorDbApi FavoritesDemotivatorDbApi { get; private set; } = new FavoritesDemotivatorDbApi();
+        public IFavoritesDemotivatorApi FavoritesDemotivatorApi { get; private set; } = new FavoritesDemotivatorApi();
 
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
 
@@ -27,7 +27,7 @@ namespace MojeDemotywatory.Controllers
             var model = new PageModel
             {
                 CurrentPage = 1,
-                FavoriteCount = FavoritesDemotivatorDbApi.Get().Count()
+                FavoriteCount = FavoritesDemotivatorApi.Get().Count()
             };
 
             var page = this.DemotivatorApi.GetPage(model.CurrentPage);
@@ -81,7 +81,7 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult SaveFavorite(string url, string imgUrl)
         {
-            this.FavoritesDemotivatorDbApi.Add(new Favorites
+            this.FavoritesDemotivatorApi.Add(new Favorites
             {
                 ImgUrl = imgUrl,
                 Url = url,
