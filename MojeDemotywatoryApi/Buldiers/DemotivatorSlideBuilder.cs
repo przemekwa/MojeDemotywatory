@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MojeDemotywatoryApi.Buldiers
 {
-    internal sealed class DemotivatorSlideBuilder : SlideBuilder
+    internal sealed class DemotivatorSlideBuilder : SlideBuilder, IDemotivatorSlideBuilder
     {
         public override DemotivatorSlide Build()
         {

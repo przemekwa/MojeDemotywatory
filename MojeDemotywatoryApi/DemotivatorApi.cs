@@ -12,37 +12,24 @@
     public class DemotivatorApi : IDemotivatorApi
     {
         private readonly string url;
+
         public static string DomainUrl { get; set; }
 
         private readonly Builder buldier;
 
         public DemotivatorApi(string url)
         {
-            this.url = url;
-
-            this.buldier = new DemotivatorBuilder();
-
             if (string.IsNullOrEmpty(url))
             {
                 throw new ArgumentNullException(nameof(url), "Adres strony demotywatorów nie może być pusty");
             }
 
+            this.url = url;
+
+            this.buldier = new DemotivatorBuilder();
+
             DomainUrl = url;
         }
-
-        //public DemotivatorApi(string url, Builder demotywatorBuldier = null)
-        //{
-        //    this.url = url;
-
-        //    this.buldier = demotywatorBuldier ?? new DemotivatorBuilder();
-
-        //    if (string.IsNullOrEmpty(url))
-        //    {
-        //        throw new ArgumentNullException(nameof(url), "Adres strony demotywatorów nie może być pusty");
-        //    }
-
-        //    DomainUrl = url;
-        //}
 
         public IEnumerable<Page> GetPages(int first, int last)
         {
