@@ -15,7 +15,7 @@
 
         public static string DomainUrl { get; set; }
 
-        private readonly Builder buldier;
+        private readonly Builder<Demotivator> buldier;
 
         public DemotivatorApi(string url)
         {

@@ -3,7 +3,7 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Buldiers
 {
-    public abstract class Builder
+    public abstract class Builder<T>
     {
         public string ImgUrl { get; set; }
 
@@ -11,6 +11,6 @@ namespace MojeDemotywatoryApi.Buldiers
 
         public string Describe { get; set; }
 
-        public abstract Demotivator Build();
+        public abstract T Build();
     }
 }

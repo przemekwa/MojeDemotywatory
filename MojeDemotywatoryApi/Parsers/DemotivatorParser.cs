@@ -7,11 +7,11 @@ namespace MojeDemotywatoryApi.Parsers
 {
     internal class DemotywatorParser
     {
-        private readonly Builder builder;
+        private readonly Builder<Demotivator> builder;
 
         private readonly string url;
 
-        public DemotywatorParser(Builder builder, string url)
+        public DemotywatorParser(Builder<Demotivator> builder, string url)
         {
             if (builder == null)
             {

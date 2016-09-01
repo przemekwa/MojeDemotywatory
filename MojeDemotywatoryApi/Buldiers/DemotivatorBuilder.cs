@@ -7,7 +7,7 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Buldiers
 {
-    internal sealed class DemotivatorBuilder : Builder, IDemotivatorBuilder
+    internal sealed class DemotivatorBuilder : Builder<Demotivator>
     {
         public override Demotivator Build()
         {
