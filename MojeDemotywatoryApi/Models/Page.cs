@@ -8,14 +8,14 @@ namespace MojeDemotywatoryApi.Models
     {
         public int PageNumber { get; set; }
 
-        public List<Demotivator> DemotivatorList { get; set; }
+        public List<Demotivator> DemotivatorCollection { get; set; }
         
-        public List<DemotivatorSlide> DemotivatorSlajdList { get; set; }
+        public List<DemotivatorSlide> DemotivatorSlideCollection { get; set; }
 
         public Page(int pageNumber)
         {
-            this.DemotivatorList = new List<Demotivator>();
-            this.DemotivatorSlajdList = new List<DemotivatorSlide>();
+            this.DemotivatorCollection = new List<Demotivator>();
+            this.DemotivatorSlideCollection = new List<DemotivatorSlide>();
 
             this.PageNumber = pageNumber;
         }

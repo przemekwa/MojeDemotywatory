@@ -12,12 +12,10 @@
     public class DemotivatorApi : IDemotivatorApi
     {
         private readonly string domainUrl;
-
        
         private readonly IParser<Demotivator> demotivatorParser;
 
         private readonly IParser<DemotivatorSlide> slideDemotivatorParser;
-
 
         public DemotivatorApi(string domainUrl)
         {
@@ -71,7 +69,7 @@
 
                     var url = domainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotivatorSlajdList.AddRange(this.GetDemovivatorSlides(url).ToList());
+                    rezult.DemotivatorSlideCollection.AddRange(this.GetDemovivatorSlides(url).ToList());
                 }
                 else
                 {
@@ -82,7 +80,7 @@
                         continue;
                     }
 
-                    rezult.DemotivatorList.Add(demotivator);
+                    rezult.DemotivatorCollection.Add(demotivator);
                 }
             }
          
@@ -94,7 +92,7 @@
         {
             return ApiTools.LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
                 .Select(htmlNode => this.slideDemotivatorParser.Parse(htmlNode))
-                .Where(demotywatorSlajd => demotywatorSlajd != null)
+                .Where(demotivatorSlide => demotivatorSlide != null)
                 .ToList();
         }
     }
