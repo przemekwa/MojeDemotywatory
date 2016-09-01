@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MojeDemotywatoryApi.Interface;
 
 namespace MojeDemotywatory.Controllers
 {
@@ -11,21 +12,26 @@ namespace MojeDemotywatory.Controllers
   
     public class DemotivatorApiController : ApiController
     {
-        public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
+        private readonly IDemotivatorApi demotivatorApi;
+
+        public DemotivatorApiController()
+        {
+            this.demotivatorApi = new DemotivatorApi("http://demotywatory.pl/");
+        }
 
         public Page Get()
-        {
-            return this.DemotivatorApi.GetMainPage();
+        { 
+            return this.demotivatorApi.GetMainPage();
         }
 
         public Page Get(int id)
         {
-            return this.DemotivatorApi.GetPage(id);
+            return this.demotivatorApi.GetPage(id);
         }
      
         public IEnumerable<Page> Get(int first, int last)
         {
-            return this.DemotivatorApi.GetPages(first, last);
+            return this.demotivatorApi.GetPages(first, last);
         }
     }
 }

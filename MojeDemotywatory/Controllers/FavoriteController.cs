@@ -11,11 +11,16 @@ namespace MojeDemotywatory.Controllers
 {
     public class FavoriteController : Controller
     {
-        public IFavoritesDemotivatorApi FavoritesDemotivatorApi { get; private set; } = new FavoritesDemotivatorApi();
+        private readonly IFavoritesDemotivatorApi favoritesDemotivatorApi;
+
+        public FavoriteController(IFavoritesDemotivatorApi favoritesDemotivatorApi)
+        {
+            this.favoritesDemotivatorApi = favoritesDemotivatorApi;
+        }
 
         public ActionResult Index()
         {
-            var favorites = FavoritesDemotivatorApi.Get().ToList();
+            var favorites = favoritesDemotivatorApi.Get().ToList();
 
             var pageModel = new PageModel
             {
@@ -32,11 +37,11 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Remove(string url)
         {
-            var favorites = FavoritesDemotivatorApi.Get().SingleOrDefault(f => f.Url == url);
+            var favorites = favoritesDemotivatorApi.Get().SingleOrDefault(f => f.Url == url);
 
             if (favorites != null)
             {
-                this.FavoritesDemotivatorApi.Remove(favorites.Id);
+                this.favoritesDemotivatorApi.Remove(favorites.Id);
             }
 
             return RedirectToAction("Index");
