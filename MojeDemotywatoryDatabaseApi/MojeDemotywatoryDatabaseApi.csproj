@@ -66,7 +66,8 @@
     <Compile Include="Dto\Favorites.cs" />
     <Compile Include="Dto\Users.cs" />
     <Compile Include="FavoritesDemotivator.cs" />
-    <Compile Include="FavoritesDemotivatorDbApi.cs" />
+    <Compile Include="FavoritesDemotivatorApi.cs" />
+    <Compile Include="IFavoritesDemotivatorApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

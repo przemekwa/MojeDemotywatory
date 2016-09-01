@@ -16,7 +16,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void IntegrationTest()
         {
-            var db = new FavoritesDemotivatorDbApi();
+            var db = new FavoritesDemotivatorApi();
 
             var favorite = db.Get();
 
@@ -28,7 +28,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void AddAndRemove()
         {
-            var db = new FavoritesDemotivatorDbApi();
+            var db = new FavoritesDemotivatorApi();
 
                 db.Add(new Favorites
                 {

@@ -3,7 +3,7 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Interface
 {
-    internal interface IDemotivatorApi
+    public interface IDemotivatorApi
     {
         IEnumerable<Page> GetPages(int first, int last);
         Page GetPage(int page);

@@ -16,11 +16,11 @@
 
         private readonly Builder buldier;
 
-        public DemotivatorApi(string url, Builder demotywatorBuldier = null)
+        public DemotivatorApi(string url)
         {
             this.url = url;
 
-            this.buldier = demotywatorBuldier ?? new DemotivatorBuilder();
+            this.buldier = new DemotivatorBuilder();
 
             if (string.IsNullOrEmpty(url))
             {
@@ -29,6 +29,20 @@
 
             DomainUrl = url;
         }
+
+        //public DemotivatorApi(string url, Builder demotywatorBuldier = null)
+        //{
+        //    this.url = url;
+
+        //    this.buldier = demotywatorBuldier ?? new DemotivatorBuilder();
+
+        //    if (string.IsNullOrEmpty(url))
+        //    {
+        //        throw new ArgumentNullException(nameof(url), "Adres strony demotywatorów nie może być pusty");
+        //    }
+
+        //    DomainUrl = url;
+        //}
 
         public IEnumerable<Page> GetPages(int first, int last)
         {

@@ -1,4 +1,5 @@
 ﻿
+using MojeDemotywatoryApi.Interface;
 using MojeDemotywatoryDatabaseApi;
 using MojeDemotywatoryDatabaseApi.Dto;
 
@@ -14,11 +15,17 @@ namespace MojeDemotywatory.Controllers
 
     public class DemotivatorController : Controller
     {
-        public DemotivatorApi DemotivatorApi { get; set; } = new DemotivatorApi("http://demotywatory.pl/");
+        private readonly IDemotivatorApi demotivatorApi;
 
-        public IFavoritesDemotivatorApi FavoritesDemotivatorApi { get; private set; } = new FavoritesDemotivatorApi();
+        private readonly IFavoritesDemotivatorApi favoritesDemotivatorApi; 
 
         private readonly ILogger log = LogManager.GetCurrentClassLogger();
+
+        public DemotivatorController(IFavoritesDemotivatorApi favoritesDemotivatorApi, IDemotivatorApi demotivatorApi )
+        {
+            this.favoritesDemotivatorApi = favoritesDemotivatorApi;
+            this.demotivatorApi = demotivatorApi;
+        }
 
         public ActionResult Index()
         {
@@ -27,10 +34,10 @@ namespace MojeDemotywatory.Controllers
             var model = new PageModel
             {
                 CurrentPage = 1,
-                FavoriteCount = FavoritesDemotivatorApi.Get().Count()
+                FavoriteCount = favoritesDemotivatorApi.Get().Count()
             };
 
-            var page = this.DemotivatorApi.GetPage(model.CurrentPage);
+            var page = this.demotivatorApi.GetPage(model.CurrentPage);
 
             this.log.Debug($"Pobrano {page.DemotivatorList.Count} demotów.");
 
@@ -44,7 +51,7 @@ namespace MojeDemotywatory.Controllers
         [HandleError(ExceptionType = typeof(NullReferenceException), View = "PageNotExist")]
         public ActionResult GetNextPage(int pageNumber = 1)
         {
-            var page = this.DemotivatorApi.GetPage(++pageNumber);
+            var page = this.demotivatorApi.GetPage(++pageNumber);
 
             var model = new PageModel
             {
@@ -70,7 +77,7 @@ namespace MojeDemotywatory.Controllers
 
             model.CurrentPage = random.Next(model.CurrentPage, 10000);
 
-            var page = this.DemotivatorApi.GetPage(model.CurrentPage);
+            var page = this.demotivatorApi.GetPage(model.CurrentPage);
 
             model.DemotivatorList = page.DemotivatorList.ToList();
 
@@ -81,7 +88,7 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult SaveFavorite(string url, string imgUrl)
         {
-            this.FavoritesDemotivatorApi.Add(new Favorites
+            this.favoritesDemotivatorApi.Add(new Favorites
             {
                 ImgUrl = imgUrl,
                 Url = url,
