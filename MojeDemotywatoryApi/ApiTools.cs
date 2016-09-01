@@ -22,12 +22,6 @@ namespace MojeDemotywatoryApi
             return htmlDocument.Load(addres);
         }
 
-        public static IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
-        {
-            return LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
-                .Select(htmlNode => new DemotivatorSlideParser(new DemotivatorSlideBuilder()).Parse(htmlNode))
-                .Where(demotywatorSlajd => demotywatorSlajd != null)
-                .ToList();
-        }
+       
     }
 }

@@ -25,15 +25,15 @@ namespace MojeDemotywarotyTesty
             Assert.AreEqual(6, rezult.DemotivatorList.Count);
         }
 
-        [TestMethod]
-        public void Get_Slide_Demot()
-        {
-            var rezult =
-                ApiTools.GetDemovivatorSlides(
-                    "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+        //[TestMethod]
+        //public void Get_Slide_Demot()
+        //{
+        //    var rezult =
+        //        ApiTools.GetDemovivatorSlides(
+        //            "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
 
-            Assert.AreEqual(9, rezult.ToList().Count);
-        }
+        //    Assert.AreEqual(9, rezult.ToList().Count);
+        //}
 
 
         [TestMethod]

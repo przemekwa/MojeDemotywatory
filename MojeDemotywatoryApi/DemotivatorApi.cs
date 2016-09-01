@@ -11,24 +11,26 @@
 
     public class DemotivatorApi : IDemotivatorApi
     {
-        private readonly string url;
+        private readonly string domainUrl;
 
-        public static string DomainUrl { get; set; }
+       
+        private readonly IParser<Demotivator> demotivatorParser;
 
-        private readonly Builder<Demotivator> buldier;
+        private readonly IParser<DemotivatorSlide> slideDemotivatorParser;
 
-        public DemotivatorApi(string url)
+
+        public DemotivatorApi(string domainUrl)
         {
-            if (string.IsNullOrEmpty(url))
+            if (string.IsNullOrEmpty(domainUrl))
             {
-                throw new ArgumentNullException(nameof(url), "Adres strony demotywatorów nie może być pusty");
+                throw new ArgumentNullException(nameof(domainUrl), "Adres strony demotywatorów nie może być pusty");
             }
 
-            this.url = url;
+            this.demotivatorParser = new DemotivatorParser(new DemotivatorBuilder(), domainUrl);
 
-            this.buldier = new DemotivatorBuilder();
+            this.slideDemotivatorParser = new DemotivatorSlideParser(new DemotivatorSlideBuilder());
 
-            DomainUrl = url;
+            this.domainUrl = domainUrl;
         }
 
         public IEnumerable<Page> GetPages(int first, int last)
@@ -57,7 +59,7 @@
         {
             var rezult = new Page(pageNumber);
 
-            var html = ApiTools.LoadHtml(DomainUrl + "page/" + pageNumber);
+            var html = ApiTools.LoadHtml(domainUrl + "page/" + pageNumber);
 
             foreach (var htmlNode in html.DocumentNode.SelectNodes("//div[@class=\"demotivator pic \"]"))
             {
@@ -67,24 +69,33 @@
                 {
                     var link = htmlNode.SelectSingleNode("div[1]/a[@class=\"picwrapper\"]");
 
-                    var url = DomainUrl + link.Attributes["href"].Value;
+                    var url = domainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotivatorSlajdList.AddRange(ApiTools.GetDemovivatorSlides(url).ToList());
+                    rezult.DemotivatorSlajdList.AddRange(this.GetDemovivatorSlides(url).ToList());
                 }
                 else
                 {
-                    var demotywator = new DemotywatorParser(buldier, DomainUrl).Parse(htmlNode);
+                   var demotivator =  this.demotivatorParser.Parse(htmlNode);
 
-                    if (demotywator == null)
+                    if (demotivator == null)
                     {
                         continue;
                     }
 
-                    rezult.DemotivatorList.Add(demotywator);
+                    rezult.DemotivatorList.Add(demotivator);
                 }
             }
          
             return rezult;
+        }
+
+
+        private IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
+        {
+            return ApiTools.LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
+                .Select(htmlNode => this.slideDemotivatorParser.Parse(htmlNode))
+                .Where(demotywatorSlajd => demotywatorSlajd != null)
+                .ToList();
         }
     }
 }

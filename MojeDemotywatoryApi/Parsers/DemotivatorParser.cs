@@ -5,13 +5,13 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Parsers
 {
-    internal class DemotywatorParser
+    internal class DemotivatorParser : IParser<Demotivator>
     {
         private readonly Builder<Demotivator> builder;
 
         private readonly string url;
 
-        public DemotywatorParser(Builder<Demotivator> builder, string url)
+        public DemotivatorParser(Builder<Demotivator> builder, string url)
         {
             if (builder == null)
             {
