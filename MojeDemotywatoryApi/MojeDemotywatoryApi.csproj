@@ -47,14 +47,11 @@
     <Compile Include="ApiTools.cs" />
     <Compile Include="Buldiers\DemotivatorBuilder.cs" />
     <Compile Include="Buldiers\DemotivatorSlideBuilder.cs" />
-    <Compile Include="Buldiers\IDemotivatorBuilder.cs" />
-    <Compile Include="Buldiers\IDemotivatorSlideBuilder.cs" />
     <Compile Include="Models\Demotivator.cs" />
     <Compile Include="Buldiers\Builder.cs" />
     <Compile Include="Models\DemotivatorSlide.cs" />
     <Compile Include="Parsers\DemotivatorParser.cs" />
     <Compile Include="DemotivatorApi.cs" />
-    <Compile Include="Buldiers\SlideBuilder.cs" />
     <Compile Include="Parsers\DemotivatorSlideParser.cs" />
     <Compile Include="Interface\IDemotivatorApi.cs" />
     <Compile Include="Models\Page.cs" />

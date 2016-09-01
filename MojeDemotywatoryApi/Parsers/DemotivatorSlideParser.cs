@@ -7,9 +7,9 @@ namespace MojeDemotywatoryApi.Parsers
 {
     internal class DemotivatorSlideParser
     {
-        private readonly SlideBuilder buldier;
+        private readonly Builder<DemotivatorSlide> buldier;
 
-        public DemotivatorSlideParser(SlideBuilder slideBuilder)
+        public DemotivatorSlideParser(Builder<DemotivatorSlide> slideBuilder)
         {
             if (slideBuilder == null)
             {
