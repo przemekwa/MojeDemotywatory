@@ -14,7 +14,7 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetMainPage();
 
-            Assert.AreEqual(6, rezult.DemotivatorList.Count);
+            Assert.AreEqual(6, rezult.DemotivatorCollection.Count);
         }
 
         [TestMethod]
@@ -22,7 +22,7 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetPage(1);
 
-            Assert.AreEqual(6, rezult.DemotivatorList.Count);
+            Assert.AreEqual(6, rezult.DemotivatorCollection.Count);
         }
 
         //[TestMethod]
@@ -47,7 +47,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void Get_Demotivator_Img_Url()
         {
-            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorList;
+            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorCollection;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.ImgUrl)));
         }
@@ -55,7 +55,7 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void Get_Demotivator_Url()
         {
-            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorList;
+            var rezult = this.DemotivatorApi.GetMainPage().DemotivatorCollection;
 
             Assert.AreNotEqual(true, rezult.All(demot => string.IsNullOrEmpty(demot.Url)));
         }

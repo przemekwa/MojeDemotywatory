@@ -69,7 +69,7 @@
 
                     var url = domainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotivatorSlideCollection.AddRange(this.GetDemovivatorSlides(url).ToList());
+                    rezult.DemotivatorSlideCollection.AddRange(this.GetDemovivatorSlides(url));
                 }
                 else
                 {

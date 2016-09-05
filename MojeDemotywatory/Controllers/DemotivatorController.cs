@@ -39,11 +39,11 @@ namespace MojeDemotywatory.Controllers
 
             var page = this.demotivatorApi.GetPage(model.CurrentPage);
 
-            this.log.Debug($"Pobrano {page.DemotivatorList.Count} demotów.");
+            this.log.Debug($"Pobrano {page.DemotivatorCollection.Count} demotów.");
 
-            model.DemotivatorList = page.DemotivatorList.ToList();
+            model.DemotivatorList = page.DemotivatorCollection.ToList();
 
-            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
+            model.DemotivatorSlideList = page.DemotivatorSlideCollection.ToList();
 
             return View(model);
         }
@@ -56,8 +56,8 @@ namespace MojeDemotywatory.Controllers
             var model = new PageModel
             {
                 CurrentPage = pageNumber,
-                DemotivatorList = page.DemotivatorList.ToList(),
-                DemotivatorSlideList = page.DemotivatorSlajdList.ToList()
+                DemotivatorList = page.DemotivatorCollection.ToList(),
+                DemotivatorSlideList = page.DemotivatorSlideCollection.ToList()
             };
          
             if (Request.IsAjaxRequest())
@@ -79,26 +79,13 @@ namespace MojeDemotywatory.Controllers
 
             var page = this.demotivatorApi.GetPage(model.CurrentPage);
 
-            model.DemotivatorList = page.DemotivatorList.ToList();
+            model.DemotivatorList = page.DemotivatorCollection.ToList();
 
-            model.DemotivatorSlideList = page.DemotivatorSlajdList.ToList();
+            model.DemotivatorSlideList = page.DemotivatorSlideCollection.ToList();
 
             return View("Index", model);
         }
 
-        public ActionResult SaveFavorite(string url, string imgUrl)
-        {
-            this.favoritesDemotivatorApi.Add(new Favorites
-            {
-                ImgUrl = imgUrl,
-                Url = url,
-                User = new User
-                {
-                    Name = HttpContext.User.Identity.Name
-                }
-            });
-
-            return RedirectToAction("Index");
-        }
+      
     }
 }

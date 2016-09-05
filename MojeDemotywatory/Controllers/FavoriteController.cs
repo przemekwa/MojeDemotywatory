@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MojeDemotywatory.Models;
 using MojeDemotywatoryApi.Models;
 using MojeDemotywatoryDatabaseApi;
+using MojeDemotywatoryDatabaseApi.Dto;
 
 namespace MojeDemotywatory.Controllers
 {
@@ -33,6 +34,21 @@ namespace MojeDemotywatory.Controllers
             };
 
             return View(pageModel);
+        }
+
+        public ActionResult SaveFavorite(string url, string imgUrl)
+        {
+            this.favoritesDemotivatorApi.Add(new Favorites
+            {
+                ImgUrl = imgUrl,
+                Url = url,
+                User = new User
+                {
+                    Name = HttpContext.User.Identity.Name
+                }
+            });
+
+            return RedirectToAction("Index", "Demotivator");
         }
 
         public ActionResult Remove(string url)
