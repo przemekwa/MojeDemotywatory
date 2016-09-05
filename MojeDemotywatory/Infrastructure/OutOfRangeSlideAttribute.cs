@@ -8,9 +8,9 @@ namespace MojeDemotywatory.Infrastructure
     {
         public void OnException(ExceptionContext filterContext)
         {
-            if (!filterContext.ExceptionHandled && filterContext.Exception is NullReferenceException)
+            if (!filterContext.ExceptionHandled && filterContext.Exception is OutOfRangeException)
             {
-                var currentPage = filterContext.HttpContext.Request.QueryString["strona"];
+                var currentPage = filterContext.HttpContext.Request.QueryString["pageNumber"];
 
                 filterContext.Result = new ViewResult
                 {

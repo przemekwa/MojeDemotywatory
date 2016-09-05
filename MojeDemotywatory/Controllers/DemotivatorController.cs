@@ -1,5 +1,6 @@
 ﻿
 using MojeDemotywatoryApi.Interface;
+using MojeDemotywatoryApi.Models;
 using MojeDemotywatoryDatabaseApi;
 using MojeDemotywatoryDatabaseApi.Dto;
 
@@ -51,7 +52,7 @@ namespace MojeDemotywatory.Controllers
         [HandleError(ExceptionType = typeof(NullReferenceException), View = "PageNotExist")]
         public ActionResult GetNextPage(int pageNumber = 1)
         {
-            var page = this.demotivatorApi.GetPage(++pageNumber);
+            var page = this.GetPage(++pageNumber);
 
             var model = new PageModel
             {
@@ -77,15 +78,34 @@ namespace MojeDemotywatory.Controllers
 
             model.CurrentPage = random.Next(model.CurrentPage, 10000);
 
-            var page = this.demotivatorApi.GetPage(model.CurrentPage);
+            try
+            {
+                var page = this.GetPage(model.CurrentPage);
 
-            model.DemotivatorList = page.DemotivatorCollection.ToList();
+                model.DemotivatorList = page.DemotivatorCollection.ToList();
 
-            model.DemotivatorSlideList = page.DemotivatorSlideCollection.ToList();
-
+                model.DemotivatorSlideList = page.DemotivatorSlideCollection.ToList();
+            }
+            catch (Exception e)
+            {
+                throw new OutOfRangeException(e);
+            }
+            
             return View("Index", model);
         }
 
-      
+
+        private Page GetPage(int currentPage)
+        {
+            try
+            {
+                return this.demotivatorApi.GetPage(currentPage);
+            }
+            catch (Exception e)
+            {
+                throw new OutOfRangeException(e);
+            }
+        }
+
     }
 }
