@@ -88,7 +88,7 @@
         }
 
 
-        private IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
+        public IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
         {
             return ApiTools.LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
                 .Select(htmlNode => this.slideDemotivatorParser.Parse(htmlNode))

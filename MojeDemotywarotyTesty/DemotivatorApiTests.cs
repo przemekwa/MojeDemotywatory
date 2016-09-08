@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MojeDemotywatoryApi;
 using System.Collections;
 using System.Linq;
+using MojeDemotywatoryApi.Buldiers;
+using MojeDemotywatoryApi.Parsers;
 
 namespace MojeDemotywarotyTesty
 {
@@ -25,15 +27,15 @@ namespace MojeDemotywarotyTesty
             Assert.AreEqual(6, rezult.DemotivatorCollection.Count);
         }
 
-        //[TestMethod]
-        //public void Get_Slide_Demot()
-        //{
-        //    var rezult =
-        //        ApiTools.GetDemovivatorSlides(
-        //            "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
-
-        //    Assert.AreEqual(9, rezult.ToList().Count);
-        //}
+        [TestMethod]
+        public void Get_Slide_Demot()
+        {
+            var rezult =
+                this.DemotivatorApi.GetDemovivatorSlides(
+                    "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+            
+            Assert.AreEqual(9, rezult.ToList().Count);
+        }
 
 
         [TestMethod]
