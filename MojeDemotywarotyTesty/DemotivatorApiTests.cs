@@ -30,18 +30,14 @@ namespace MojeDemotywarotyTesty
         [TestMethod]
         public void Get_Slide_Demot()
         {
-            //var demotivatorParser = new DemotivatorParser(new DemotivatorBuilder(), domainUrl);
+            var pageParser = new PageParser(null, new DemotivatorSlideParser(new DemotivatorSlideBuilder()), null);
 
-            //var slideDemotivatorParser = new DemotivatorSlideParser(new DemotivatorSlideBuilder());
+            var result =
+                pageParser.GetDemovivatorSlides(
+                    "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+                    
 
-            //this.PageParser = new PageParser(demotivatorParser, slideDemotivatorParser, domainUrl);
-
-            //var result=  new PageParser();
-            //var rezult =
-            //    this.DemotivatorApi.GetDemovivatorSlides(
-            //        "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
-            
-            //Assert.AreEqual(9, rezult.ToList().Count);
+            Assert.AreEqual(9, result.ToList().Count);
         }
 
 
