@@ -3,7 +3,7 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Parsers
 {
-    internal interface IParser<out T>
+    public interface IParser<out T>
     {
         T Parse(HtmlNode htmllNode);
     }

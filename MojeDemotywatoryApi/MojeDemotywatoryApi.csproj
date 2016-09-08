@@ -55,7 +55,9 @@
     <Compile Include="Parsers\DemotivatorSlideParser.cs" />
     <Compile Include="Interface\IDemotivatorApi.cs" />
     <Compile Include="Models\Page.cs" />
+    <Compile Include="Parsers\IPageParser.cs" />
     <Compile Include="Parsers\IParser.cs" />
+    <Compile Include="Parsers\PageParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

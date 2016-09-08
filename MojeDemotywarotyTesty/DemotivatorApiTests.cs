@@ -16,7 +16,7 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetMainPage();
 
-            Assert.AreEqual(6, rezult.DemotivatorCollection.Count);
+            Assert.AreEqual(7, rezult.DemotivatorCollection.Count);
         }
 
         [TestMethod]
@@ -24,17 +24,24 @@ namespace MojeDemotywarotyTesty
         {
             var rezult = this.DemotivatorApi.GetPage(1);
 
-            Assert.AreEqual(6, rezult.DemotivatorCollection.Count);
+            Assert.AreEqual(7, rezult.DemotivatorCollection.Count);
         }
 
         [TestMethod]
         public void Get_Slide_Demot()
         {
-            var rezult =
-                this.DemotivatorApi.GetDemovivatorSlides(
-                    "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
+            //var demotivatorParser = new DemotivatorParser(new DemotivatorBuilder(), domainUrl);
+
+            //var slideDemotivatorParser = new DemotivatorSlideParser(new DemotivatorSlideBuilder());
+
+            //this.PageParser = new PageParser(demotivatorParser, slideDemotivatorParser, domainUrl);
+
+            //var result=  new PageParser();
+            //var rezult =
+            //    this.DemotivatorApi.GetDemovivatorSlides(
+            //        "http://demotywatory.pl/4405857/10-ciekawostek-o-ludzkim-organizmie-ktore-cie-zadziwia");
             
-            Assert.AreEqual(9, rezult.ToList().Count);
+            //Assert.AreEqual(9, rezult.ToList().Count);
         }
 
 

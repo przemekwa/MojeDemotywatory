@@ -5,7 +5,7 @@ using MojeDemotywatoryApi.Models;
 
 namespace MojeDemotywatoryApi.Parsers
 {
-    internal class DemotivatorParser : IParser<Demotivator>
+    public class DemotivatorParser : IParser<Demotivator>
     {
         private readonly Builder<Demotivator> builder;
 
