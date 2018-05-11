@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HtmlAgilityPack;
 using MojeDemotywatoryApi.Buldiers;
 using MojeDemotywatoryApi.Models;
@@ -49,6 +50,11 @@ namespace MojeDemotywatoryApi.Parsers
             builder.Url = url + link.Attributes["href"].Value;
 
             return this.builder.Build();
+        }
+
+        public IEnumerable<Demotivator> ParseMany(HtmlNode htmllNode)
+        {
+            throw new NotImplementedException();
         }
     }
 

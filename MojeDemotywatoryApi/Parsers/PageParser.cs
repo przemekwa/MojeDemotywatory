@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MojeDemotywatoryApi.Models;
+using OpenQA.Selenium.PhantomJS;
 
 namespace MojeDemotywatoryApi.Parsers
 {
@@ -38,7 +39,11 @@ namespace MojeDemotywatoryApi.Parsers
 
                     var url = domainUrl + link.Attributes["href"].Value;
 
-                    rezult.DemotivatorSlideCollection.AddRange(this.GetDemovivatorSlides(url));
+                    var htmlSlide = ApiTools.LoadHtml(url);
+
+                    var node = htmlSlide.DocumentNode.SelectSingleNode("//div[@class=\"demotivator pic\"]");
+
+                    rezult.DemotivatorSlideCollection.AddRange(this.slideDemotivatorParser.ParseMany(node));
                 }
                 else
                 {
@@ -58,10 +63,33 @@ namespace MojeDemotywatoryApi.Parsers
 
         public IEnumerable<DemotivatorSlide> GetDemovivatorSlides(string url)
         {
-            return ApiTools.LoadHtml(url).DocumentNode.SelectNodes("//div[@class=\"rsSlideContent\"]")
-                .Select(htmlNode => this.slideDemotivatorParser.Parse(htmlNode))
-                .Where(demotivatorSlide => demotivatorSlide != null)
-                .ToList();
+            return new List<DemotivatorSlide>();
+
+            //driver.Url = url;
+
+            //driver.Navigate();
+
+            //var pathElements = driver.FindElementsByClassName("rsImg");
+            //var result = new List<DemotivatorSlide>();
+
+            //foreach (var element in pathElements)
+            //{
+            //    var imgSrc = element.GetAttribute("src");
+
+            //    if (imgSrc == null)
+            //    {
+            //        continue;
+            //    }
+
+            //    result.Add(new DemotivatorSlide
+            //    {
+            //        ImgUrl = imgSrc,
+            //        Description = "",
+            //        Url = url
+            //    });
+            //}
+
+            //return result;
         }
     }
 }

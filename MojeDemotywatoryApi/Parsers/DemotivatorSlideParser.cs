@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 using HtmlAgilityPack;
 using MojeDemotywatoryApi.Buldiers;
 using MojeDemotywatoryApi.Models;
@@ -19,24 +21,58 @@ namespace MojeDemotywatoryApi.Parsers
             this.buldier = slideBuilder;
         }
 
-        public DemotivatorSlide Parse(HtmlNode htmlNode)
+        public IEnumerable<DemotivatorSlide> Parse(HtmlNode htmlNode)
         {
-            var imgTag = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
+           
 
-            var imgDescription = htmlNode.SelectSingleNode("p");
 
-            if (string.IsNullOrEmpty(imgDescription?.InnerText))
+            //var imgTag = htmlNode.SelectSingleNode("div[@class=\"relative\"]/img[@class=\"rsImg \"]");
+
+            //var imgDescription = htmlNode.SelectSingleNode("p");
+
+            //if (string.IsNullOrEmpty(imgDescription?.InnerText))
+            //{
+            //    imgDescription = htmlNode.SelectSingleNode("h3");
+            //}
+
+            //if (imgTag == null) return null;
+
+            //buldier.ImgUrl = imgTag.Attributes["src"].Value;
+
+            //buldier.Description = imgDescription == null ? "" : imgDescription.InnerText;
+
+            return null;
+        }
+
+        public IEnumerable<DemotivatorSlide> ParseMany(HtmlNode htmllNode)
+        {
+
+            var last = htmllNode.InnerText.LastIndexOf("var MMG = MMG || {};");
+
+            var teskt =  htmllNode.InnerText.Substring(145,last - 145);
+
+             var htmlDocument = new HtmlWeb
             {
-                imgDescription = htmlNode.SelectSingleNode("h3");
-            }
+                AutoDetectEncoding = true
+            };
+             
+            var test = htmllNode.SelectNodes("//div[@class=\"pic_royal_off_single\"]");
 
-            if (imgTag == null) return null;
 
-            buldier.ImgUrl = imgTag.Attributes["src"].Value;
+            
 
-            buldier.Description = imgDescription == null ? "" : imgDescription.InnerText;
 
-            return this.buldier.Build();
+           
+
+
+            
+
+            throw new NotImplementedException();
+        }
+
+        DemotivatorSlide IParser<DemotivatorSlide>.Parse(HtmlNode htmllNode)
+        {
+            throw new NotImplementedException();
         }
     }
 }
