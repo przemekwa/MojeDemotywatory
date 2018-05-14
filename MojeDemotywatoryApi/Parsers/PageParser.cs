@@ -54,6 +54,11 @@ namespace MojeDemotywatoryApi.Parsers
                         continue;
                     }
 
+                    if (demotivator.ImgUrl.Contains("demotywatoryfb") == false)
+                    {
+                        continue;
+                    }
+
                     rezult.DemotivatorCollection.Add(demotivator);
                 }
             }

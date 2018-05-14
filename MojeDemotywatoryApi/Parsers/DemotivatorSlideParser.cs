@@ -47,27 +47,29 @@ namespace MojeDemotywatoryApi.Parsers
         public IEnumerable<DemotivatorSlide> ParseMany(HtmlNode htmllNode)
         {
 
-            var last = htmllNode.InnerText.LastIndexOf("var MMG = MMG || {};");
+            //var last = htmllNode.InnerText.LastIndexOf("var MMG = MMG || {};");
 
-            var teskt =  htmllNode.InnerText.Substring(145,last - 145);
+            //var teskt =  htmllNode.InnerText.Substring(145,last - 145);
 
-             var htmlDocument = new HtmlWeb
-            {
-                AutoDetectEncoding = true
-            };
-             
-            var test = htmllNode.SelectNodes("//div[@class=\"pic_royal_off_single\"]");
+            // var htmlDocument = new HtmlWeb
+            //{
+            //    AutoDetectEncoding = true
+            //};
 
-
-            
+            //var test = htmllNode.SelectNodes("//div[@class=\"pic_royal_off_single\"]");
 
 
-           
 
 
-            
 
-            throw new NotImplementedException();
+
+
+
+
+
+            //throw new NotImplementedException();
+
+            return new List<DemotivatorSlide>();
         }
 
         DemotivatorSlide IParser<DemotivatorSlide>.Parse(HtmlNode htmllNode)
