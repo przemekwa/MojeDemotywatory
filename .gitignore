@@ -172,3 +172,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+.vs/MojeDemotywatory/v15/Server/sqlite3/storage.ide
+.vs/MojeDemotywatory/v15/Server/sqlite3/storage.ide-shm
+.vs/MojeDemotywatory/v15/Server/sqlite3/storage.ide-wal
