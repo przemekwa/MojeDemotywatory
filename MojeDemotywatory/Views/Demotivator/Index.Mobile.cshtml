@@ -36,15 +36,27 @@
                 loadProducts();
             });
 
+            $(".nav .nav-link").on("click", function () {
+                $(".nav").find(".active").removeClass("active");
+                $(this).addClass("active");
+            });
+
         });
 </script>
 
 
-<div id="productList" class="demotivator-center">
-    @Html.Partial("_Page");
-    <button type="button" class="btn btn-warning shwoMore">Pokaż więcej</button>
+<div class="row">
+    <div class="col-12">
+        <div id="productList" class="demotivator-center">
+            @Html.Partial("_Page");
+
+            <button type="button" class="btn btn-warning shwoMore">Pokaż więcej</button>
 
 
+        </div>
+
+        <div id="loading" class="demotivator-center"></div>
+    </div>
 </div>
 
-<div id="loading" class="demotivator-center"></div> 
+

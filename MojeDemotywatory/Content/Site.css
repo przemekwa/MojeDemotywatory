@@ -1,7 +1,6 @@
 ﻿.tlo {
     background-color: black;
-    margin: 50px;
-}
+ }
 
 .demotivator-center {
     width: 50%;
@@ -9,8 +8,30 @@
     padding-bottom: 90px;
 }
 
+.btn-fav {
+
+}
+
+.shwoMore {
+
+}
+
 @media screen and (max-width: 480px) {
     .demotivator-center {
         width: auto;
+    }
+
+    .btn-fav {
+        font-size: 25px;
+    }
+
+    .shwoMore {
+        font-size: 25px;
+    }
+    .nav-link {
+        font-size: 25px;
+    }
+    .navbar-brand {
+        font-size: 25px;
     }
 }
