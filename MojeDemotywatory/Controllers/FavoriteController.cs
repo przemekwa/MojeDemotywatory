@@ -53,7 +53,7 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Remove(string url)
         {
-            var favorites = favoritesDemotivatorApi.Get().SingleOrDefault(f => f.Url == url);
+            var favorites = favoritesDemotivatorApi.Get().FirstOrDefault(f => f.Url == url);
 
             if (favorites != null)
             {
