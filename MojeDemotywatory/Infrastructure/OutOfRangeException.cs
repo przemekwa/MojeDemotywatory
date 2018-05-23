@@ -7,7 +7,7 @@ namespace MojeDemotywatory.Infrastructure
 {
     public class OutOfRangeException : Exception
     {
-        public OutOfRangeException(Exception e) : base("Brak strony", e)
+        public OutOfRangeException(Exception e) : base("Page not found", e)
         {
             
         }

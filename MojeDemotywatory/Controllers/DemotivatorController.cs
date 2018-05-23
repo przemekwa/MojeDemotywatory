@@ -20,8 +20,6 @@ namespace MojeDemotywatory.Controllers
 
         private readonly IFavoritesDemotivatorApi favoritesDemotivatorApi; 
 
-        private readonly ILogger log = LogManager.GetCurrentClassLogger();
-
         public DemotivatorController(IFavoritesDemotivatorApi favoritesDemotivatorApi, IDemotivatorApi demotivatorApi )
         {
             this.favoritesDemotivatorApi = favoritesDemotivatorApi;
@@ -30,8 +28,6 @@ namespace MojeDemotywatory.Controllers
 
         public ActionResult Index()
         {
-            this.log.Debug("Start aplikacji");
-
             var model = new PageModel
             {
                 CurrentPage = 1,
@@ -39,8 +35,6 @@ namespace MojeDemotywatory.Controllers
             };
 
             var page = this.demotivatorApi.GetPage(model.CurrentPage);
-
-            this.log.Debug($"Pobrano {page.DemotivatorCollection.Count} demotów.");
 
             model.DemotivatorList = page.DemotivatorCollection.ToList();
 
